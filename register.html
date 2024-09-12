@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Buscapet</title>
+    <link rel="stylesheet" href="./src/styles/register/style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="register-content">
+            <div class="form-content">
+                <div class="title-content">
+                    <span>
+                        <img src="./src/images/icons/logo_name.png">
+                    </span>
+                </div>
+            <form onsubmit="handleSubmit()">
+                <span class="header-test"></span>
+                <span class="bg-asset-container"></span>
+                <div class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name">
+                </div>
+                <div class="form-group">
+                  <label for="username">Usuário:</label>
+                  <input type="text" id="username" maxlength="32">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input  type="email" id="email">
+                </div>
+                <div class="form-group">
+                  <label for="password">Senha:</label>
+                  <input type="password" id="password" maxlength="64">
+                </div>
+                <div class="form-group">
+                    <label for="password-confirm">Confirmar Senha:</label>
+                    <input type="password" id="password-confirm" maxlength="64">
+                </div>
+                <button type="submit">Registrar-se</button>
+                <div class="register-content">
+                    <div class="register-text">
+                      <a href="index.html">Entrar em conta já existente</a>
+                    </div>
+                </div>
+            </form>
+            </div>  
+        </div>
+    </div>
+</body>
+</html>
