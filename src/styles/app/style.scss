@@ -6,6 +6,8 @@ $floatIconStrokeColor: #E9D418;
 $floatIconFillColor: #E9D418;
 $floatButtonBackground: #202020;
 
+$takePictureFrame: #EDB506;
+
 
 .leaflet-layer,
 .leaflet-control-zoom-in,
@@ -51,8 +53,12 @@ body {
             height: 100%;
     
             #map {
-                z-index: 2;
+                z-index: 3;
                 height: 100%;
+
+                &.spotlight{
+                    z-index: 10;
+                }
             }
     
             .controls {
@@ -89,6 +95,10 @@ body {
                     &.hidden{
                         display: none;
                         pointer-events: all;
+                    }
+
+                    &.spotlight{
+                        z-index: 11;
                     }
                 }
     
@@ -338,51 +348,98 @@ body {
     }
 
     .popup-content{
+        display: flex;
         z-index: 99;
         position: absolute;
+        justify-content: center;
+        align-items: center;
         width: 100%;
         height: 100%;
+
         top: 0;
         left: 0;
 
-        background-color: blue;
+
+        .back-button-content{
+            z-index: 99;
+            position: absolute;
+            top: 1em;
+            left: 1em;
+            .back-button-container{
+
+                .back-button{
+                    width: 4.5em;
+                    aspect-ratio: 1;
+
+                    background: #ffffff;
+                    border: none;
+                    border-radius: 100%;
+                    cursor: pointer;
+                    svg{
+                        width: 100%;
+                        height: 100%;
+
+                        path{
+                            fill: $takePictureFrame;
+                        }
+                    }
+                }
+            }
+        }
 
         .popup-page{
+            position: absolute;
             width: 100%;
             height: 100%;
 
-            background-color: #F6C708;
+
 
             .camera-content{
 
                 .camera-container{
+                    position: relative;
 
                     .video-content{
+                        position: relative;
                         display: flex;
                         width: 100%;
                         justify-content: center;
 
-                        .video-container{
+                        .video-frame{
                             position: relative;
-                            display: inline-block;
-                            width: 350px;
+                            z-index: 3;
+                            display: flex;
+                            justify-content: center;
+                            width: 120%;
+                            max-width: 500px;
                             aspect-ratio: 1;
-                            
-                            border-radius: 50%;
-                            overflow: hidden;
-                            margin-bottom: 10px;
-    
-                            video{
-                                width: 100%;
-                                height: 100%;
-                                object-fit: cover;
+                            margin-top: 1em;
+
+
+                            .video-container{
+                                position: absolute;
+                                z-index: 4;
+                                width: 70%;
+                                aspect-ratio: 1;
+                                top: 1em;
                                 
                                 border-radius: 50%;
-                            }
+                                overflow: hidden;
         
+                                video{
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    
+    
+                                    border-radius: 50%;
+                                }
+            
+                            }
                         }
-                    }
 
+                    }
+                    /*
                     #photo {
                         position: relative;
                         display: inline-block;
@@ -393,10 +450,163 @@ body {
 
                         border-radius: 50%;
                         overflow: hidden;
+                    
+
+                    }
+                        */
+                }
+
+                &.hidden{
+                    display: none;
+                }
+            }
+
+            .take-picture-content{
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                bottom: 0;
+                
+                margin-top: 5em;
+
+                .button-frame{
+                    z-index: 1;
+                    position: absolute;
+                    width: 60%;
+                    aspect-ratio: 1;
+                    bottom: 0;
+                    transform: translate(0, 50%);
+
+                    border-radius: 100%;
+                    background-color: $takePictureFrame;
+
+
+                }
+
+                .take-picture-container{
+                    position: relative;
+                    z-index: 2;
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    height: 100%;
+
+                    .take-picture-button{
+                        position: absolute;
+                        width: 40%;
+                        aspect-ratio: 1;
+                        margin-top: 1em;
+
+                        background: none;
+                        border: none;
+                        border-radius: 100%;
+
+                        svg{
+                            width: 100%;
+
+                            path{
+                                fill: #ffffff;
+                            }
+                        }
 
                     }
                 }
+
+                &.hidden{
+                    display: none;
+                }
             }
+
+            &.first-step{
+                z-index: 10;
+            }
+
+            &.second-step{
+                display: flex;
+                flex-direction: column;
+                z-index: 11;
+                justify-content: center;
+                width: 80%;
+                
+                .taken-picture-content{
+
+                    padding: .5em;
+
+                    border: solid $floatButtonBackground 3px;
+                    border-radius: 100%;
+
+                    .taken-picture-container{
+                        width: 100%;
+                        aspect-ratio: 1;
+
+                        border-radius: 100%;
+                        overflow: hidden;
+                        background-color: red;
+
+                        img{
+                            position: relative;
+                            display: inline-block;
+                            object-fit: cover;
+                            width: 100%;
+                            height: 100%;
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+
+                .divisor{
+                    height: 10em;
+                }
+
+                .buttons-content{
+
+                    .buttons-container{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        
+                        .button-container{
+                            width: 100%;
+                            
+                            .second-step-button{
+                                width: 100%;
+                                padding: 1em;
+
+                                font-size: 21px;
+                                color: #ffffff;
+                                font-weight: 500;
+                                border: none;
+                                border-radius: 10px;
+                                
+                                &.next-button{
+                                    margin-bottom: 1em;
+
+                                    background: $takePictureFrame;
+                                }
+
+                                &.try-button{
+
+                                    background: $floatButtonBackground;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            &.third-step{
+                z-index: 12;
+            }
+
+            &.hidden{
+                display: none;
+            }
+        }
+
+        &.hidden{
+            display: none;
         }
     }
 

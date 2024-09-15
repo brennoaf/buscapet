@@ -109,22 +109,73 @@
           </div>
         </div>
       </div>
-      <div class="popup-content">
-        <div class="popup-page">
+      <div class="popup-content hidden">
+        <div class="back-button-content">
+          <div class="back-button-container">
+            <button class="back-button">
+              <svg viewBox="2.1 2.1 19.9 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM11.7071 9.70711C12.0976 9.31658 12.0976 8.68342 11.7071 8.29289C11.3166 7.90237 10.6834 7.90237 10.2929 8.29289L7.37993 11.2059C7.36486 11.2209 7.35031 11.2363 7.33627 11.252C7.12998 11.4352 7 11.7024 7 12C7 12.2976 7.12998 12.5648 7.33627 12.748C7.3503 12.7637 7.36486 12.7791 7.37993 12.7941L10.2929 15.7071C10.6834 16.0976 11.3166 16.0976 11.7071 15.7071C12.0976 15.3166 12.0976 14.6834 11.7071 14.2929L10.4142 13L16 13C16.5523 13 17 12.5523 17 12C17 11.4477 16.5523 11 16 11L10.4142 11L11.7071 9.70711Z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="popup-page first-step hidden">
           <div class="camera-content">
             <div class="camera-container">
               <div class="video-content">
-                <div class="video-container">
-                  <div class="video-frame"></div>
-                  <video id="video" autoplay></video>
+                <div class="video-frame">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0.2 1 23.6 24" fill="none">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgb(235, 1, 1);" />
+                            <stop offset="70%" style="stop-color:rgb(216, 20, 102);" />
+                        </linearGradient>
+                    </defs>
+                    <path id="vector (Stroke)" fill="url(#grad1)" fill-rule="evenodd" clip-rule="evenodd" d="M8.9461 21.1315L8.89129 21.0787L8.89035 21.0778C8.81273 21.0023 8.73386 20.9254 8.65394 20.8471C7.2824 19.5029 5.57222 17.7231 4.34999 15.6268C3.12314 13.5227 2.35382 11.04 2.96276 8.32592C5.09133 -1.11519 18.9197 -1.10413 21.0372 8.33595C21.6639 11.1292 20.831 13.6741 19.5403 15.8149C18.2545 17.9477 16.4747 19.7455 15.0992 21.0783C14.0956 22.0555 13.1259 22.7323 12.0296 22.7449C10.9283 22.7576 9.95462 22.098 8.95039 21.1357L8.9461 21.1315Z" />
+                    <path id="ellipse (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M8.75 9.5C8.75 7.70507 10.2051 6.25 12 6.25C13.7949 6.25 15.25 7.70507 15.25 9.5C15.25 11.2949 13.7949 12.75 12 12.75C10.2051 12.75 8.75 11.2949 8.75 9.5Z"/>
+                  </svg>
+                  <div class="video-container">
+                    <video id="video" autoplay></video>
+                  </div>
                 </div>
               </div>
-              <button id="capture">Capture Photo</button>
               <canvas id="canvas" style="display: none;"></canvas>
-              <img id="photo" alt="Captured photo">
+              <img id="" alt="">
+            </div>
+          </div>
+          <div class="take-picture-content">
+            <div class="button-frame">
+              <div class="take-picture-container">
+                <button class="take-picture-button" id="capture">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.77778 21H14.2222C17.3433 21 18.9038 21 20.0248 20.2646C20.51 19.9462 20.9267 19.5371 21.251 19.0607C22 17.9601 22 16.4279 22 13.3636C22 10.2994 22 8.76721 21.251 7.6666C20.9267 7.19014 20.51 6.78104 20.0248 6.46268C19.3044 5.99013 18.4027 5.82123 17.022 5.76086C16.3631 5.76086 15.7959 5.27068 15.6667 4.63636C15.4728 3.68489 14.6219 3 13.6337 3H10.3663C9.37805 3 8.52715 3.68489 8.33333 4.63636C8.20412 5.27068 7.63685 5.76086 6.978 5.76086C5.59733 5.82123 4.69555 5.99013 3.97524 6.46268C3.48995 6.78104 3.07328 7.19014 2.74902 7.6666C2 8.76721 2 10.2994 2 13.3636C2 16.4279 2 17.9601 2.74902 19.0607C3.07328 19.5371 3.48995 19.9462 3.97524 20.2646C5.09624 21 6.65675 21 9.77778 21ZM12 9.27273C9.69881 9.27273 7.83333 11.1043 7.83333 13.3636C7.83333 15.623 9.69881 17.4545 12 17.4545C14.3012 17.4545 16.1667 15.623 16.1667 13.3636C16.1667 11.1043 14.3012 9.27273 12 9.27273ZM12 10.9091C10.6193 10.9091 9.5 12.008 9.5 13.3636C9.5 14.7192 10.6193 15.8182 12 15.8182C13.3807 15.8182 14.5 14.7192 14.5 13.3636C14.5 12.008 13.3807 10.9091 12 10.9091ZM16.7222 10.0909C16.7222 9.63904 17.0953 9.27273 17.5556 9.27273H18.6667C19.1269 9.27273 19.5 9.63904 19.5 10.0909C19.5 10.5428 19.1269 10.9091 18.6667 10.9091H17.5556C17.0953 10.9091 16.7222 10.5428 16.7222 10.0909Z"/>
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
+
+        <div class="popup-page second-step hidden">
+          <div class="taken-picture-content">
+            <div class="taken-picture-container">
+              <canvas id="canvas" style="display: none;"></canvas>
+              <img id="photo" alt="">
+            </div>
+          </div>
+          <div class="divisor"></div>
+          <div class="buttons-content">
+            <div class="buttons-container">
+              <div class="next button-container">
+                <button class="next-button second-step-button">Avançar</button>
+              </div>
+              <div class="try button-container">
+                <button class="try-button second-step-button">Tentar Novamente</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="popup-page third-step hidden"></div>
       </div>
       <!--
       <header class="toolbar-content">
@@ -173,7 +224,6 @@
       </div>
     -->
     </div>
-    <script src="./src/scripts/app/takePhoto.js"></script>
     <script src="./src/scripts/app/app.js" type="module"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="./src/scripts/app/script.js"></script>
