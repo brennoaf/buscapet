@@ -5,9 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Map</title>
     <link rel="stylesheet" href="./src/styles/app/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   </head>
   <body>
     <div class="main">
+      <div class="page-content">
+        <div class="map-content">
+          <div id="map"></div>
+          <div class="controls">
+            <button onclick="addMarkerFromCurrentLocation()">Add Marker at My Location</button>
+          </div>
+          <div class="buttons-content">
+            <div class="blur-background hidden"></div>
+            <div class="down-container">
+              <div class="float-buttons-container">
+                <div class="alt-buttons-container">
+                  <div class="left-bottom-container alt-button-container initial">
+                    <button class="alt-button">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                        <g id="SVGRepo_iconCarrier"> 
+                          <path class="cam-inside" d="M15 13H9" stroke-width="1.5" stroke-linecap="round"/> 
+                          <path class="cam-inside" d="M12 10L12 16" stroke-width="1.5" stroke-linecap="round"/> 
+                          <path opacity="0.7" d="M9.77778 21H14.2222C17.3433 21 18.9038 21 20.0248 20.2646C20.51 19.9462 20.9267 19.5371 21.251 19.0607C22 17.9601 22 16.4279 22 13.3636C22 10.2994 22 8.76721 21.251 7.6666C20.9267 7.19014 20.51 6.78104 20.0248 6.46268C19.3044 5.99013 18.4027 5.82123 17.022 5.76086C16.3631 5.76086 15.7959 5.27068 15.6667 4.63636C15.4728 3.68489 14.6219 3 13.6337 3H10.3663C9.37805 3 8.52715 3.68489 8.33333 4.63636C8.20412 5.27068 7.63685 5.76086 6.978 5.76086C5.59733 5.82123 4.69555 5.99013 3.97524 6.46268C3.48995 6.78104 3.07328 7.19014 2.74902 7.6666C2 8.76721 2 10.2994 2 13.3636C2 16.4279 2 17.9601 2.74902 19.0607C3.07328 19.5371 3.48995 19.9462 3.97524 20.2646C5.09624 21 6.65675 21 9.77778 21Z" stroke-width="1.5"/> 
+                          <path class="cam-inside" d="M19 10H18" stroke-width="1.5" stroke-linecap="round"/> 
+                        </g>
+                      </svg>
+                    </button>
+                    <span class="button-text">
+                      <p>Registrar!</p>
+                    </span>
+                  </div>
+                  <div class="left-top-container alt-button-container initial">
+                    <button class="alt-button">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1 24 24" fill="none">
+                        <path d="M19 3H5C3.58579 3 2.87868 3 2.43934 3.4122C2 3.8244 2 4.48782 2 5.81466V6.50448C2 7.54232 2 8.06124 2.2596 8.49142C2.5192 8.9216 2.99347 9.18858 3.94202 9.72255L6.85504 11.3624C7.49146 11.7206 7.80967 11.8998 8.03751 12.0976C8.51199 12.5095 8.80408 12.9935 8.93644 13.5872C9 13.8722 9 14.2058 9 14.8729L9 17.5424C9 18.452 9 18.9067 9.25192 19.2613C9.50385 19.6158 9.95128 19.7907 10.8462 20.1406C12.7248 20.875 13.6641 21.2422 14.3321 20.8244C15 20.4066 15 19.4519 15 17.5424V14.8729C15 14.2058 15 13.8722 15.0636 13.5872C15.1959 12.9935 15.488 12.5095 15.9625 12.0976C16.1903 11.8998 16.5085 11.7206 17.145 11.3624L20.058 9.72255C21.0065 9.18858 21.4808 8.9216 21.7404 8.49142C22 8.06124 22 7.54232 22 6.50448V5.81466C22 4.48782 22 3.8244 21.5607 3.4122C21.1213 3 20.4142 3 19 3Z" stroke-width="1.5"/>
+                      </svg>
+                    </button>
+                    <span class="button-text">
+                      <p>Filtrar</p>
+                    </span>
+                  </div>
+                  <div class="right-top-container alt-button-container initial">
+                    <button class="alt-button">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  
+              
+                        <path class="c" d="M16.58,10.03c0,3.62-2.93,6.55-6.55,6.55s-6.55-2.93-6.55-6.55S6.41,3.47,10.03,3.47s6.55,2.93,6.55,6.55Z"/>
+                        <line class="c" x1="14.82" x2="20.53" y1="14.78" y2="20.53"/>
+  
+                      </svg>
+                    </button>
+                    <span class="button-text">
+                      <p>Perdidos</p>
+                    </span>
+                  </div>
+                  <div class="right-bottom-container alt-button-container initial">
+                    <button class="alt-button">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 17V16.9929M12 14.8571C12 11.6429 15 12.3571 15 9.85714C15 8.27919 13.6568 7 12 7C10.6567 7 9.51961 7.84083 9.13733 9M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </button>
+                    <span class="button-text">
+                      <p>Dúvidas</p>
+                    </span>
+                  </div>
+                </div>
+                <div class="main-button-container">
+                  <div class="main-button-content">
+                    <button class="menu-main-button">
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_" viewBox="0 0 512 512" xml:space="preserve">
+                          <path class="st0" d="M205.116,153.078c31.534,11.546,69.397-12.726,84.58-54.209c15.174-41.484,1.915-84.462-29.614-96.001   c-31.541-11.53-69.4,12.735-84.582,54.218C160.325,98.57,173.584,141.548,205.116,153.078z"/>
+                          <path class="st0" d="M85.296,219.239c32.987-2.86,56.678-40.344,52.929-83.75c-3.757-43.391-33.545-76.253-66.532-73.409   c-32.984,2.869-56.674,40.36-52.921,83.759C22.53,189.23,52.313,222.091,85.296,219.239z"/>
+                          <path class="st0" d="M342.196,217.768c28.952,17.017,70.552-0.073,92.926-38.154c22.374-38.106,17.041-82.758-11.915-99.774   c-28.951-17.001-70.56,0.097-92.93,38.178C307.905,156.117,313.245,200.768,342.196,217.768z"/>
+                          <path class="st0" d="M497.259,262.912c-18.771-27.271-63.07-29.379-98.954-4.694c-35.892,24.701-49.762,66.822-30.996,94.101   c18.766,27.27,63.069,29.38,98.954,4.686C502.143,332.312,516.021,290.191,497.259,262.912z"/>
+                          <path class="st0" d="M304.511,268.059c-3.58-24.773-18.766-47.366-43.039-58.824c-24.268-11.45-51.365-8.807-72.758,4.169   c-23.646,14.35-38.772,33.096-59.138,41.29c-20.363,8.193-77.4-16.209-112.912,48.278c-25.081,45.548-2.057,103.128,44.962,125.315   c35.738,16.864,64.023,14.981,84.788,24.774c20.762,9.793,37.29,32.83,73.025,49.692c47.018,22.188,106.1,3.362,125.315-44.957   c27.206-68.407-27.897-96.922-34.522-117.85C303.613,319.021,308.47,295.426,304.511,268.059z"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--
       <header class="toolbar-content">
         <h1>Radar</h1>
         <form id="apiKeyForm">
@@ -16,12 +99,8 @@
           <button type="submit">Load Map</button>
         </form>
       </header>
-      <div class="map-content">
-        <div id="map"></div>
-        <div class="controls">
-          <button onclick="addMarkerFromCurrentLocation()">Add Marker at My Location</button>
-        </div>
-      </div>
+    -->
+      <!--
       <div class="menu-content">
         <div class="menu-page">
           <div class="draggable-indicator-content">
@@ -56,9 +135,10 @@
           </div>
         </div>
       </div>
+    -->
     </div>
-
-    <script src="./src/scripts/app/menuHandler.js"></script>
+    <script src="./src/scripts/app/app.js" type="module"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="./src/scripts/app/script.js"></script>
   </body>
 </html>

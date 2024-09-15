@@ -2,6 +2,22 @@
 
 $menuFontColor: #CFB57D;
 
+$floatIconStrokeColor: #E9D418;
+$floatIconFillColor: #E9D418;
+$floatButtonBackground: #202020;
+
+.leaflet-container{
+    background: #202020;
+}
+
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+    
+}
+
+
 *{
     margin: 0;
     padding: 0;
@@ -23,101 +39,269 @@ body {
     left: 0;
     overflow: hidden;
 
-    .toolbar-content{
-        background-color: #F6C708;
-    }
-
-    .map-content{
-        position: relative;
-        height: 100%;
-
-        #map {
-            height: 100%;
-        }
-
-        .controls {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: white;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.2);
-        }
-    }
-
-    .menu-content{
-        position: fixed;
-        display: flex;
+    .page-content{
         width: 100%;
-        justify-content: center;
-        bottom: -180px;
+        height: 100%;
+        position: relative;
 
-        transition: bottom 0.3s ease;
-        background:#2F1916;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-
-        .menu-page{
-            width: 100%;
-            height: 300px;
-
-
-            .draggable-indicator-content{
-                display: flex;
-                justify-content: center;
-                width: 100%;
-                margin-top: 1em;
-
-                hr{
-                    width: 64px;
-                    height: 4px;
-                    background: gray;
-
-                    border: none;
-                    border-radius: 5px;
-                }
+        .toolbar-content{
+            background-color: #F6C708;
+        }
+    
+        .map-content{
+            position: relative;
+            height: 100%;
+    
+            #map {
+                z-index: 2;
+                height: 100%;
             }
+    
+            .controls {
+                z-index: 3;
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background: white;
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(0,0,0,0.2);
+            }
+    
+            .buttons-content{
+                z-index: 3;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
 
-            .options-container{
-                display: flex;
-                flex-direction: column;
-                padding: 1em;
-                margin-top: 1em;
-
-                .option-content{
+                pointer-events: none;
+    
+                .blur-background{
+                    z-index: 2;
                     width: 100%;
-                    margin-bottom: 1em;
-
-                    &:hover{
-                        background-color: #CFB57D;
+                    height: 100%;
+    
+                    backdrop-filter: blur(5px);
+                    pointer-events: none;
+    
+                    &.hidden{
+                        display: none;
                     }
+                }
+    
+                .down-container{
+                    position: absolute;
+                    width: 100%;
+                    bottom: 0;
+    
+                    .float-buttons-container{
+                        position: relative;
+                        display: flex;
+                        width: 100%;
+                        justify-content: center;
+                        align-items: end;
+                        margin-bottom: 1em;
+    
+                        .alt-buttons-container{
+                            z-index: 3;
+                            position: absolute;
+                            width: 300px;
+                            height: 185px;
+    
+                            .alt-button-container{
+                                position: absolute;
+                                display: flex;
+                                flex-direction: column;
+                                flex-shrink: 0;
+                                align-items: center;
+                                width: fit-content;
+    
+                                transition: .3s;
+                                color: $floatButtonBackground;
+                                font-weight: 300;
+    
+                                .alt-button{
+                                    width: 4.5em;
+                                    aspect-ratio: 1;
+                                    padding: .5em;
+                                    
+                                    background: $floatButtonBackground;
+                                    border: none;
+                                    border-radius: 100%;
+    
+                                    svg{
+                                        fill: none;
+                                        stroke: $floatIconStrokeColor;
+                                        stroke-width: 1.5;
 
-                    .wrapper{
-                        display: inline-flex;
-                        align-items: center;
+                                    }
+    
+                                }
+    
+                                span{
+                                    margin-top: .5em;
+                                }
+    
+                                &.left-bottom-container{
+                                    bottom: 0;
+                                    left: 0;
+                                    top: auto;
+    
+                                }
+    
+                                &.left-top-container{
+                                    top: 0;
+                                    left: 4em;
+                                    bottom: auto;
 
-                        .icon-content{
-                            margin-right: 2em;
-                            width: 32px;
-                            height: 32px;
+                                }
+    
+                                &.right-top-container{
+                                    top: 0;
+                                    right: 4em;
+                                    bottom: auto;
+                                    left: 61%;
+                                }
+    
+                                &.right-bottom-container{
+                                    bottom: 0;
+                                    right: 0;
+                                    top: auto;
+                                    left: 78%;
+                                }
 
-                            svg{
-                                width: 100%;
-                                height: 100%;
-
-                                stroke: $menuFontColor;
-                                fill: none;
+                                &.initial{
+                                    top: 100px;
+                                    bottom: inherit;
+                                    right: inherit;
+                                    left: 40%;
+                                    transform: scale(0.3);
+                                }
+    
                             }
                         }
+    
+    
+                        .main-button-container{
+                            z-index: 4;
+                            flex-shrink: 0;
+    
+                            .main-button-content{
+    
+    
+                                .menu-main-button{
+                                    width: 6em;
+                                    aspect-ratio: 1;
+                                    padding: 1em;
+                                    padding-left: 1.2em;
+    
+                                    background: $floatButtonBackground;
+                                    transition: 1s;
+                                    border: none;
+                                    border-radius: 100%;
 
-                        .text-content{
-                            color: $menuFontColor;
-                            font-size: 20px;
+                                    pointer-events: all;
+    
+                                    svg{
+                                        width: 100%;
+                                        height: 100%;
+
+                                        transition: .3s;
+                                        pointer-events: none;
+    
+                                        .st0{
+                                            fill: $floatIconFillColor;
+                                        }
+
+                                        &.onfocus{
+                                            transform: rotateZ(-23deg);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+        .menu-content{
+            position: fixed;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            bottom: -180px;
+    
+            transition: bottom 0.3s ease;
+            background:#2F1916;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+    
+            .menu-page{
+                width: 100%;
+                height: 300px;
+    
+    
+                .draggable-indicator-content{
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    margin-top: 1em;
+    
+                    hr{
+                        width: 64px;
+                        height: 4px;
+                        background: gray;
+    
+                        border: none;
+                        border-radius: 5px;
+                    }
+                }
+    
+                .options-container{
+                    display: flex;
+                    flex-direction: column;
+                    padding: 1em;
+                    margin-top: 1em;
+    
+                    .option-content{
+                        width: 100%;
+                        margin-bottom: 1em;
+    
+                        &:hover{
+                            background-color: #CFB57D;
+                        }
+    
+                        .wrapper{
+                            display: inline-flex;
+                            align-items: center;
+    
+                            .icon-content{
+                                margin-right: 2em;
+                                width: 32px;
+                                height: 32px;
+    
+                                svg{
+                                    width: 100%;
+                                    height: 100%;
+    
+                                    stroke: $menuFontColor;
+                                    fill: none;
+                                }
+                            }
+    
+                            .text-content{
+                                color: $menuFontColor;
+                                font-size: 20px;
+                            }
                         }
                     }
                 }
             }
         }
     }
+
+
 }
