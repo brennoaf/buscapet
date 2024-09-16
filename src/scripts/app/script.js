@@ -27,6 +27,7 @@ function initializeMap() {
         //shadowUrl: 'https://unpkg.com/leaflet/dist/images/marker-shadow.png',
         //shadowSize: [41, 41]
     }), title: 'Sua localização'}).addTo(map);
+    
 
     // Função para rastrear a localização do usuário
     trackUserLocation();
@@ -43,6 +44,8 @@ function initializeMap() {
 }
 
 function trackUserLocation() {
+    let i = true;
+
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition(
             (position) => {
@@ -64,35 +67,54 @@ function trackUserLocation() {
                         }),
                         title: 'Sua localização'
                     }).addTo(map);
+
+                    map.setView(userPosition, 17);
+                }
+                
+                //Gambiarra para ajeitar depois
+                while(i){
+                    map.setView(userPosition, 17);
+                    i = false;
                 }
 
-                // Centraliza o mapa na nova posição do usuário
-                map.setView(userPosition, 18);
+                setInterval(() => {
+                    // Centraliza o mapa na nova posição do usuário
+                    map.setView(userPosition);
+
+                }, 60000)
+
             },
             (error) => {
                 handleLocationError(true, map.getCenter(), error.message);
             },
             {
                 enableHighAccuracy: true, // Tentar obter localização com alta precisão
-                timeout: 10000,
+                timeout: 9000,
                 maximumAge: 0
             }
+
         );
+
     } else {
         handleLocationError(false, map.getCenter());
     }
 }
 
 function addMarkerFromCurrentLocation() {
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             position => {
                 const userPosition = [position.coords.latitude, position.coords.longitude];
 
                 if (!isPositionNearExistingMarker(userPosition)) {
-                    const marker = L.marker(userPosition, { title: 'Your Location' }).addTo(map);
+                    const marker = L.marker(
+                        userPosition, 
+                        {title: 'Sua Localização' }
+
+                    ).addTo(map);
                     markers.push(marker);
-                    map.setView(userPosition, 12);
+                    map.setView(userPosition);
                 } else {
                     alert('A marker already exists near your location.');
                 }
@@ -116,6 +138,27 @@ function handleLocationError(browserHasGeolocation, pos, message = "Unknown erro
                 : "Error: Your browser does not support geolocation."
         )
         .openOn(map);
+}
+
+function test(){
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                const userPosition = [position.coords.latitude, position.coords.longitude];
+
+                map.setView(userPosition, 17);
+
+
+                console.log('Encontrado!')
+            },
+            () => {
+                alert('Unable to retrieve your location. Please check your browser\'s location permissions.');
+            },
+            { timeout: 10000 }
+        );
+    } else {
+        alert('Geolocation is not supported by this browser.');
+    }
 }
 
 initializeMap();
