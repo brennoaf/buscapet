@@ -1,6 +1,7 @@
 import { MenuFloatButton } from "./menuFloatButton.js"
 import { TakePicture } from "./takePhoto.js";
 import { PublicationStep } from "./publicationStep.js";
+import { InputsSetups } from "./inputsSetup.js";
 
 const page = {
     map: {
@@ -32,10 +33,27 @@ const page = {
         thirdStepContainer: document.querySelector('.third-step'),
 
         backButton: document.querySelector('.back-button'),
-        tryAgainButton: document.querySelector('.try-button')
+        tryAgainButton: document.querySelector('.try-button'),
+        nextStepButton: document.querySelector('.next-button')
+    },
+
+    markInputs: {
+        sketchMarkColor: document.querySelector('.sketch-mark-color'),
+        input: document.querySelectorAll('.mark-input'),
+        sendBtn: document.querySelector('.send-button'),
+        markPhoto: document.getElementById('mark-photo'),
+        markCanvas: document.getElementById('mark-canvas'),
+
+        color:{
+            dropdown: {
+                content: document.querySelector('.dropdown-content'),
+                button: document.querySelector('.choose-color-button'),
+            }
+        }
     }
 }
 
 const menuFloatButton = new MenuFloatButton(page);
 // const takePicture = new TakePicture(page);
 const publicationStep = new PublicationStep(page);
+const inputsSetups = new InputsSetups(page);

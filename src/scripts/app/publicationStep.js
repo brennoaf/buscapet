@@ -8,7 +8,7 @@ export class PublicationStep{
     }
 
     setListeners(){
-        const { menu, picture, map } = this.page;
+        const { menu, picture, map, markInputs } = this.page;
         
         //settando first step
         picture.startStepButton.addEventListener('click', () =>{
@@ -44,10 +44,11 @@ export class PublicationStep{
                 map.self.classList.toggle('spotlight');
                 
 
-            }else if(!picture.secondStepContainer.classList.contains('hidden')){
-                
             }else if(!picture.thirdStepContainer.classList.contains('hidden')){
+                picture.firstStepContainer.classList.toggle('hidden');
+                picture.thirdStepContainer.classList.toggle('hidden');
 
+                picture.backButton.classList.toggle('hidden');
             }
         })
 
@@ -60,5 +61,32 @@ export class PublicationStep{
                 picture.backButton.classList.toggle('hidden');
 
         })
+
+        picture.nextStepButton.addEventListener('click', () =>{
+            picture.secondStepContainer.classList.toggle('hidden');
+            picture.thirdStepContainer.classList.toggle('hidden');
+            menu.blurBackground.classList.toggle('hidden');
+            menu.blurBackground.classList.toggle('spotlight');
+            picture.backButton.classList.toggle('hidden');
+
+            const dataURL = picture.canvas.toDataURL('image/png');
+            markInputs.markPhoto.src = dataURL;
+            markInputs.markPhoto.style.display = 'block';
+
+        });
+
+        markInputs.sendBtn.addEventListener('click', () =>{
+            picture.popupContent.classList.toggle('hidden');
+            picture.thirdStepContainer.classList.toggle('hidden');
+            map.self.classList.toggle('spotlight');
+
+            //resetando
+            setTimeout(() =>{
+                this.page.markInputs.color.dropdown.button.style.backgroundColor = 'lightgray';
+                this.page.markInputs.color.dropdown.button.textContent = "Cor";
+                this.page.markInputs.sketchMarkColor.style.fill = 'gray';
+            }, 10000)
+        })
+
     }
 }

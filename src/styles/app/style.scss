@@ -8,6 +8,11 @@ $floatButtonBackground: #202020;
 
 $takePictureFrame: #EDB506;
 
+$colorTypeOnStreet: #FFC917;
+$colorTypeLost: #A80101;
+$colorTypeCasual: #008604;
+$colorTypeAccident: #2D0000;
+
 
 .leaflet-layer,
 .leaflet-control-zoom-in,
@@ -168,6 +173,7 @@ body {
                                     width: 4.5em;
                                     aspect-ratio: 1;
                                     padding: .5em;
+                                    flex-shrink: 0;
                                     
                                     background: $floatButtonBackground;
                                     border: none;
@@ -375,6 +381,7 @@ body {
                     border: none;
                     border-radius: 100%;
                     cursor: pointer;
+
                     svg{
                         width: 100%;
                         height: 100%;
@@ -638,6 +645,225 @@ body {
 
             &.third-step{
                 z-index: 12;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 90%;
+
+                
+                .taken-picture-content{
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+
+
+                    .picture-frame{
+                        position: absolute;
+                        width: 50%;
+
+                        svg{
+                            width: 100%;
+                            height: 100%;
+
+                            path{
+                                fill: gray;
+                            }
+                        }
+                    }
+
+                    .taken-picture-container{
+                        position: relative;
+                        z-index: 2;
+                        width: 35%;
+                        aspect-ratio: 1;
+                        top: .5em;
+
+                        border-radius: 100%;
+                        overflow: hidden;
+                        background-color: red;
+
+                        img{
+                            position: relative;
+                            display: inline-block;
+                            object-fit: cover;
+                            width: 100%;
+                            height: 100%;
+
+                        }
+                    }
+                }
+
+                .divisor{
+                    height: 4em;
+                }
+
+                .inputs-content{
+                    width: 100%;
+                    padding: 1.5em 1em 1em 1em;
+
+                    border-radius: 6px;
+                    background: #ffffff;
+
+                    .title-content{
+                        margin-bottom: 3em;
+
+                        font-size: 18px;
+                        font-weight: 500;
+                        color: $takePictureFrame;
+                    }
+
+                    .inputs-container{
+                        width: 100%;
+                        
+                        .choose-color-content{
+                
+                            &.dropdown{
+                              width: 100%;
+                              position: relative;
+                
+                              .dropdown-button{
+                                  display: flex;
+                                  width: 100%;
+                                  height: 100%;
+                                  padding-left: .5em;
+                                  align-items: center;
+                
+                                  color: #ffffff;
+                                  font-size: 17px;
+                                  font-weight: 500;
+                                  background: none;
+                                  border: none;
+                                  border-radius: 8px;
+                                  background: lightgray;
+                                  cursor: pointer;
+                
+                                  &:hover{
+                                      background-color: lightyellow;
+                                  }
+                              }
+                
+                              .dropdown-content{
+                                  display: none;
+                                  position: absolute;
+                                  flex-direction: column;
+                                  width: 100%;
+                              
+                                  font-size: 15px;
+                                  background-color: lightyellow;
+                                  z-index: 1;
+                                  border-radius: 5px;
+                                  overflow: hidden;
+                
+                                  a{
+                                    display: block;
+                                    padding: 1em;
+                                    text-decoration: none;
+                
+                                    span{
+                                      display: flex;
+                                      align-items: center;
+                                      
+                                      color: $floatButtonBackground;
+                                    }
+                
+                                    &:hover{
+                                        background-color: lightgray;
+                                    }
+                                  }
+                
+                                  &.show{
+                                      display: flex;
+                                  }
+                
+                                  .color-type{
+                                    width: 10%;
+                                    aspect-ratio: 1;
+                                    flex-shrink: 0;
+                                    margin-right: 1em;
+
+                                    border-radius: 100%;
+
+                                    &.street{
+                                        background-color: $colorTypeOnStreet;
+                                    }
+                                    &.lost{
+                                        background-color: $colorTypeLost;
+                                    }
+                                    &.casual{
+                                        background-color: $colorTypeCasual;
+                                    }
+                                    &.accident{
+                                        background-color: $colorTypeAccident;
+                                    }
+                                  }
+                              }
+                          }
+                
+                          }
+                        
+
+                        .input-content{
+                            height: 3em;
+
+                            margin-bottom: 1.5em;
+
+                            label{
+                                display: flex;
+                                position: relative;
+                                align-items: end;
+                                width: 100%;
+                                height: 100%;
+
+                                p{
+                                    position: absolute;
+                                    left: 0;
+                                    top: 22px;
+
+                                    font-size: 17px;
+                                    color: $floatIconFillColor;
+                                    transition: .7s;
+                                    pointer-events: none;
+
+                                }
+
+                                input{
+                                    width: 100%;
+                                    height: 50%;
+
+                                    color: $floatButtonBackground;
+                                    font-size: 16px;
+                                    background: none;
+                                    border: none;
+                                    border-bottom: solid $floatButtonBackground 1px;
+                                    outline: none;
+                                }
+                            }
+                        }
+                    }
+
+                    .send-content{
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+
+                        .send-button{
+                            width: 50%;
+                            padding: 1em;
+
+                            color: #ffffff;
+                            font-size: 16px;
+                            font-weight: 500;
+                            background: $takePictureFrame;
+                            border: none;
+                            border-radius: 10px;
+
+                            &:disabled{
+                                background-color: rgb(80, 80, 80);
+                            }
+                        }
+                    }
+                
+                }
             }
 
             &.hidden{
