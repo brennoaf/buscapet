@@ -41,14 +41,20 @@ export class TakePicture {
     capturePhoto() {
         const { picture } = this.page;
         const context = picture.canvas.getContext('2d');
-
+    
         picture.captureButton.addEventListener('click', () => {
+
             picture.canvas.width = picture.video.videoWidth;
             picture.canvas.height = picture.video.videoHeight;
             context.drawImage(picture.video, 0, 0, picture.canvas.width, picture.canvas.height);
             const dataURL = picture.canvas.toDataURL('image/png');
             picture.photo.src = dataURL;
             picture.photo.style.display = 'block';
+    
+            // Para a câmera após tirar a foto
+            if (this.stream) {
+                this.stream.getTracks().forEach(track => track.stop());
+            }
         });
     }
 
