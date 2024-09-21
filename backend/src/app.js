@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: 'https://buscapet-eight.vercel.app/app.html',
+        origin: ['https://buscapet-eight.vercel.app', 'https://buscapet.onrender.com', 'https://buscapet-production.up.railway.app'],
         methods: ['GET', 'POST']
     }
 });
