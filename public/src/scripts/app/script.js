@@ -27,6 +27,9 @@ socket.on('existingMarkers', (existingMarkers) => {
         newMarker.bindPopup(marker.popupContent).openPopup();
 
         markers.push(newMarker);
+
+
+        checkingPopupPane();
     });
 });
 
@@ -53,6 +56,31 @@ socket.on('newMarker', (markerData) => {
 
     markers.push(newMarker);
 });
+
+
+
+function checkingPopupPane(){
+    const popupPane = document.querySelector('.leaflet-popup-pane');
+
+    const observer = new MutationObserver((mutationsList) => {
+        for (let mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+                if (mutation.addedNodes.length > 0) {
+                    const popupWrapper = document.querySelectorAll('.leaflet-popup-content');
+                    popupWrapper.forEach(popup =>{
+                        popup.style.width = '100%';
+                    })
+                }
+            }
+        }
+    });
+
+        const config = { childList: true };
+
+        observer.observe(popupPane, config);
+}
+
+
 
 function initializeMap() {
     map = L.map('map').setView([-8.063245261243702, -34.87105100479096], 12);
@@ -117,7 +145,7 @@ function trackUserLocation() {
     }
 }
 
-function addMarkerFromCurrentLocation() {
+function addMarkerFromCurrentLocation(markName, markDescription, markComment) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             position => {
@@ -130,7 +158,39 @@ function addMarkerFromCurrentLocation() {
                 }).addTo(map);
 
                 // Define o conteúdo do popup
-                const popupContent = `<b>Marcador Padrão!</b><br><img src=${animalIcon.markPhoto.src} style='width: 3em; aspect-ratio: 1;'>`;
+                const popupContent = `
+                <div class='left-column-profile'>
+                    <div class='profile-picture-content'>
+                        <div class='profile-picture-frame'>
+                            <img src="./src/images/background_asset/mark_popup_left_paint.png">
+                        </div>
+                        <div class='profile-picture-wrapper'>
+                            <img src=${animalIcon.markPhoto.src} style='width: 12em; aspect-ratio: 1;'>
+                        </div>
+                    </div>
+                </div>
+                <div class='right-column-information'>
+                    <div class='animal-text-content'>
+                        <div class='title-wrapper'>
+                            <p>${markName}</p>
+                        </div>
+                        <div class='description-wrapper'>
+                            <p>${markDescription}</p>
+                        </div>
+                        <div class='comment-wrapper'>
+                            <div class='frame-container'>
+                                <div class='frame-title'>
+                                    <p>Comentário</p>
+                                </div>
+                                <div class='frame-border'>
+                                    <p>${markComment}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                `
 
                 marker.bindPopup(popupContent).openPopup();
 
@@ -150,6 +210,12 @@ function addMarkerFromCurrentLocation() {
                 });
 
                 map.setView(userPosition);
+
+                const popupWrapper = document.querySelectorAll('.leaflet-popup-content');
+
+                popupWrapper.forEach(popup =>{
+                    popup.style.width = '100%';
+                });
             },
             () => {
                 alert('Unable to retrieve your location. Please check your browser\'s location permissions.');
@@ -164,7 +230,12 @@ function addMarkerFromCurrentLocation() {
 const sendButton = document.querySelector('.send-button');
 
 sendButton.addEventListener('click', () => {
-    addMarkerFromCurrentLocation();
+    const markNameInput = document.querySelector('.input-pet-name');
+    const markDescriptionInput = document.querySelector('.input-pet-description');
+    const markCommentInput = document.querySelector('.input-extra-description');
+
+    addMarkerFromCurrentLocation(markNameInput.value, markDescriptionInput.value, markCommentInput.value);
+
 });
 
 function handleLocationError(browserHasGeolocation, pos, message = "Unknown error") {

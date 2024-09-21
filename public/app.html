@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Map</title>
-    <link rel="stylesheet" href="./src/styles/app/style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="./src/styles/app/style.css">
+    <link rel="stylesheet" href="./src/styles/app/marks/popup.css">
   </head>
   <body>
     <div class="main">
@@ -13,7 +14,7 @@
         <div class="map-content">
           <div id="map"></div>
           <div class="controls">
-            <button onclick="addMarkerFromCurrentLocation()">Add Marker at My Location</button>
+            <button>Add Marker at My Location</button>
             <button onclick="test()">Test</button>
           </div>
           <div class="buttons-content">
@@ -237,25 +238,25 @@
               <div class="input-content pet-name">
                 <label for="pet-name">
                   <p class="custom-placeholder">Nome</p>
-                  <input type="text" class="mark-input input-pet-name" name="pet-name">
+                  <input type="text" class="mark-input input-pet-name" name="pet-name" maxlength="24">
                 </label>
               </div>
               <div class="input-content pet-description">
                 <label for="pet-description">
                   <p class="custom-placeholder">Descrição</p>
-                  <input type="text" class="mark-input input-pet-description" name="pet-description">
+                  <input type="text" class="mark-input input-pet-description" name="pet-description" maxlength="72">
                 </label>
               </div>
               <div class="input-content extra-description">
                 <label for="extra-description">
                   <p class="custom-placeholder">Comentários</p>
-                  <input type="text" class="mark-input input-extra-description" name="extra-description">
+                  <input type="text" class="mark-input input-extra-description" name="extra-description" maxlength="100">
                 </label>
               </div>
             </div>
 
             <div class="send-content">
-              <button disabled="true" class="send-button" onclick="addMarkerFromCurrentLocation()">
+              <button disabled="true" class="send-button">
                 Concluir
               </button>
             </div>
@@ -312,7 +313,7 @@
     </div>
     <script src="./src/scripts/app/app.js" type="module"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="http://127.0.0.1:3000/socket.io/socket.io.js"></script>
+    <script src="https://18.231.185.144:3001/socket.io/socket.io.js"></script>
     <script src="./src/scripts/app/script.js" type="module"></script>
   </body>
 </html>
