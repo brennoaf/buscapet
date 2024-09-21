@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: 'http://127.0.0.1:5500',
+        origin: 'https://buscapet-eight.vercel.app/app.html',
         methods: ['GET', 'POST']
     }
 });
@@ -31,6 +31,6 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(3000, () => {
+server.listen(3002, () => {
     console.log('Servidor rodando na porta 3000');
 });

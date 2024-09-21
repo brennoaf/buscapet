@@ -4,7 +4,7 @@ let map;
 let userMarker;
 let markers = [];
 const THRESHOLD = 0.0001;
-const socket = io('http://127.0.0.1:3000');
+const socket = io('18.231.185.144:3002');
 
 socket.on('existingMarkers', (existingMarkers) => {
     existingMarkers.forEach(marker => {
