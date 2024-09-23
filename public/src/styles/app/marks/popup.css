@@ -38,6 +38,30 @@
 .leaflet-popup-pane .leaflet-popup .leaflet-popup-content-wrapper .leaflet-popup-content .left-column-profile .profile-picture-content .profile-picture-wrapper img {
   width: 100%;
 }
+.leaflet-popup-pane .leaflet-popup .leaflet-popup-content-wrapper .leaflet-popup-content .left-column-profile .profile-picture-content .profile-picture-wrapper .chosen-animal-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 4em;
+  height: 4em;
+  padding: 0.2em;
+  bottom: 0.2em;
+  right: 1em;
+  border-radius: 100%;
+  background: #EDB506;
+}
+.leaflet-popup-pane .leaflet-popup .leaflet-popup-content-wrapper .leaflet-popup-content .left-column-profile .profile-picture-content .profile-picture-wrapper .chosen-animal-content .icon-content {
+  width: 60%;
+  aspect-ratio: 1;
+}
+.leaflet-popup-pane .leaflet-popup .leaflet-popup-content-wrapper .leaflet-popup-content .left-column-profile .profile-picture-content .profile-picture-wrapper .chosen-animal-content .text-content p {
+  margin: 0;
+  margin-top: -0.5em;
+  color: #202020;
+  font-size: 10px;
+  font-weight: 500;
+}
 .leaflet-popup-pane .leaflet-popup .leaflet-popup-content-wrapper .leaflet-popup-content .right-column-information {
   width: 230px;
   margin-left: 0.5em;

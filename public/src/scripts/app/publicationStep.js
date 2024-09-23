@@ -82,8 +82,8 @@ export class PublicationStep{
 
             //resetando
             setTimeout(() =>{
-                this.page.markInputs.color.dropdown.button.style.backgroundColor = 'lightgray';
-                this.page.markInputs.color.dropdown.button.textContent = "Cor";
+                this.page.markInputs.color.dropdown.button.style.backgroundColor = 'none';
+                this.page.markInputs.color.dropdown.button.textContent = "";
                 this.page.markInputs.sketchMarkColor.style.fill = 'gray';
             }, 10000)
         })

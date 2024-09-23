@@ -145,7 +145,7 @@ function trackUserLocation() {
     }
 }
 
-function addMarkerFromCurrentLocation(markName, markDescription, markComment) {
+function addMarkerFromCurrentLocation(markName, markDescription, markComment, animalButton) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             position => {
@@ -157,7 +157,7 @@ function addMarkerFromCurrentLocation(markName, markDescription, markComment) {
                     title: 'Sua Localização'
                 }).addTo(map);
 
-                // Define o conteúdo do popup
+                // conteúdo do popup
                 const popupContent = `
                 <div class='left-column-profile'>
                     <div class='profile-picture-content'>
@@ -166,13 +166,21 @@ function addMarkerFromCurrentLocation(markName, markDescription, markComment) {
                         </div>
                         <div class='profile-picture-wrapper'>
                             <img src=${animalIcon.markPhoto.src} style='width: 12em; aspect-ratio: 1;'>
+                            <div class='chosen-animal-content'>
+                                <div class='icon-content'>
+                                    ${animalButton.childNodes[1].childNodes[1].childNodes[0].outerHTML}
+                                </div>
+                                <div class='text-content'>
+                                    <p>${animalButton.childNodes[1].childNodes[3].childNodes[1].textContent}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class='right-column-information'>
                     <div class='animal-text-content'>
                         <div class='title-wrapper'>
-                            <p>${markName}</p>
+                            <p style='color:${getComputedStyle(markName).color}'>${markName.textContent}</p>
                         </div>
                         <div class='description-wrapper'>
                             <p>${markDescription}</p>
@@ -230,11 +238,13 @@ function addMarkerFromCurrentLocation(markName, markDescription, markComment) {
 const sendButton = document.querySelector('.send-button');
 
 sendButton.addEventListener('click', () => {
-    const markNameInput = document.querySelector('.input-pet-name');
+    //const markNameInput = document.querySelector('.input-pet-name');
+    const animalButton = document.querySelector('.choose-animal-button');
+    const colorDropdownButton = document.querySelector('.choose-color-button');
     const markDescriptionInput = document.querySelector('.input-pet-description');
     const markCommentInput = document.querySelector('.input-extra-description');
 
-    addMarkerFromCurrentLocation(markNameInput.value, markDescriptionInput.value, markCommentInput.value);
+    addMarkerFromCurrentLocation(colorDropdownButton, markDescriptionInput.value, markCommentInput.value, animalButton);
 
 });
 

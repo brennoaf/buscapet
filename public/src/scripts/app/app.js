@@ -49,6 +49,13 @@ const page = {
                 content: document.querySelector('.dropdown-content'),
                 button: document.querySelector('.choose-color-button'),
             }
+        },
+
+        chooseAnimal:{
+            button: document.querySelector('.choose-animal-button'),
+            optionsContainer: document.querySelector('.choose-animal-options-container'),
+            options: document.querySelectorAll('.animal-option'),
+            content: document.querySelector('.choose-animal-options-content')
         }
     }
 }

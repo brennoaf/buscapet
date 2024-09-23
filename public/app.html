@@ -165,7 +165,6 @@
             </div>
           </div>
         </div>
-
         <div class="popup-page second-step hidden">
           <div class="taken-picture-content">
             <div class="taken-picture-container">
@@ -186,25 +185,245 @@
           </div>
         </div>
         <div class="popup-page third-step hidden">
-          <div class="taken-picture-content">
-            <div class="picture-frame">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0.2 1 23.6 24" fill="none">
-                <path class="sketch-mark-color" id="vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M8.9461 21.1315L8.89129 21.0787L8.89035 21.0778C8.81273 21.0023 8.73386 20.9254 8.65394 20.8471C7.2824 19.5029 5.57222 17.7231 4.34999 15.6268C3.12314 13.5227 2.35382 11.04 2.96276 8.32592C5.09133 -1.11519 18.9197 -1.10413 21.0372 8.33595C21.6639 11.1292 20.831 13.6741 19.5403 15.8149C18.2545 17.9477 16.4747 19.7455 15.0992 21.0783C14.0956 22.0555 13.1259 22.7323 12.0296 22.7449C10.9283 22.7576 9.95462 22.098 8.95039 21.1357L8.9461 21.1315Z" />
-                <path id="ellipse (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M8.75 9.5C8.75 7.70507 10.2051 6.25 12 6.25C13.7949 6.25 15.25 7.70507 15.25 9.5C15.25 11.2949 13.7949 12.75 12 12.75C10.2051 12.75 8.75 11.2949 8.75 9.5Z"/>
-              </svg>
+          <div class="background-content">
+            <div class="background-wrapper">
+              <div class="right-top background-asset">
+                <img src="./src/images/background_asset/popup_bg_left_bottom_asset.png">
+              </div>
+              <div class="left-bottom background-asset">
+                <img src="./src/images/background_asset/popup_bg_left_bottom_asset.png">
+              </div>
             </div>
-            <div class="taken-picture-container">
-              <canvas id="mark-canvas" style="display: none;"></canvas>
-              <img id="mark-photo">
+          </div>
+          <div class="first-line-row">
+            <div class="taken-picture-content">
+              <div class="picture-frame">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0.2 1 23.6 24" fill="none">
+                  <path class="sketch-mark-color" id="vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M8.9461 21.1315L8.89129 21.0787L8.89035 21.0778C8.81273 21.0023 8.73386 20.9254 8.65394 20.8471C7.2824 19.5029 5.57222 17.7231 4.34999 15.6268C3.12314 13.5227 2.35382 11.04 2.96276 8.32592C5.09133 -1.11519 18.9197 -1.10413 21.0372 8.33595C21.6639 11.1292 20.831 13.6741 19.5403 15.8149C18.2545 17.9477 16.4747 19.7455 15.0992 21.0783C14.0956 22.0555 13.1259 22.7323 12.0296 22.7449C10.9283 22.7576 9.95462 22.098 8.95039 21.1357L8.9461 21.1315Z" />
+                  <path id="ellipse (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M8.75 9.5C8.75 7.70507 10.2051 6.25 12 6.25C13.7949 6.25 15.25 7.70507 15.25 9.5C15.25 11.2949 13.7949 12.75 12 12.75C10.2051 12.75 8.75 11.2949 8.75 9.5Z"/>
+                </svg>
+              </div>
+              <div class="taken-picture-container">
+                <canvas id="mark-canvas" style="display: none;"></canvas>
+                <img id="mark-photo">
+              </div>
+            </div>
+            <div class="choose-animal-content">
+              <div class="choose-animal-options-content">
+                <div class="choose-animal-options-container hidden">
+                  <button class="animal-option dog">
+                    <div class="icon-content">
+                      <svg viewBox="50 50 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M203.649 130.718C202.646 143.465 203.234 156.293 204.925 168.972C214.145 238.087 244.754 177.369 232.994 118.604" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M245.536 109.548C256.203 102.57 329.311 51.0408 334.604 77.4954C340.357 106.24 281.701 134.658 266.587 153.54C233.414 194.983 240.37 267.19 258.932 313.571" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M188.757 172.667C160.768 213.661 142.788 258.933 133.258 306.557" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M187.483 252.363C200.257 240.696 232.704 250.007 225.121 270.216C220.22 283.275 206.715 296.359 196.414 305.282C192.752 308.454 188.223 311.744 183.655 313.571C182.591 313.996 179.656 314.037 180.465 314.846C182.301 316.68 227.891 302.968 230.224 312.296C231.285 316.538 196.757 326.763 192.586 327.598C170.905 331.931 145.057 331.208 126.242 318.671C122.064 315.888 120.725 309.47 117.31 307.196C116.889 306.915 81.0682 330.857 65 321.222" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M254.625 115.931C255.217 117.802 256.719 119.256 257.955 120.738" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M327.549 76.7464C350.69 73.7804 307.915 95.8559 326.006 77.7741" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="text-content">
+                      <p>Cachorro</p>
+                    </div>
+                  </button>
+                  <button class="animal-option cat">
+                    <div class="icon-content">
+                      <svg viewBox="50 50 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M245.2 134.289C294.12 73.9855 219.025 82.2174 208.126 76.763C204.296 74.849 200.528 56.3705 192.005 60.6375C178.88 67.2036 179.995 101.383 178.571 112.785C177.798 118.991 169.133 127.877 166.285 134.289C161.739 144.521 156.744 156.692 148.393 169.402C140.043 182.113 122.592 191.967 113.857 201.681C76.682 243.002 92.6204 291.579 133.435 322.992C174.716 354.764 347.131 342.906 298.399 269.769" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M225.903 162.283C238.018 206.627 220.627 252.936 220.627 296.357C220.627 301.354 230.543 296.532 235.401 297.425" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M162.667 208.879C172.419 210.315 181.319 217.474 188.222 224.166C222.582 257.481 178.688 279.87 176.257 291.647C175.708 294.311 187.035 296.145 189.31 296.389" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M211.536 62.994C218.161 56.7795 219.425 67.6568 220.627 73.6378" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="text-content">
+                      <p>Gato</p>
+                    </div>
+                  </button>
+                  <button class="animal-option bird">
+                    <div class="icon-content">
+                      <svg viewBox="50 50 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M191.179 273.824C240.235 297.511 305.516 282.723 327.848 235.07C343.653 201.345 294.142 174.478 268.869 180.597C249.795 185.215 238.443 210.424 226.139 201.065C216.677 165.605 199.9 119.51 135.192 107.37C114.091 103.412 83.5311 110.64 102.336 135.815C116.496 154.766 137.36 163.983 158.442 173.765C164.792 176.714 169.78 183.842 176.581 185.72C178.199 186.166 181.717 185.007 181.525 186.671C181.105 190.238 113.899 155.977 108.125 179.498C103.955 196.484 152.426 206.208 162.693 208.177C163.338 208.3 167.696 208.583 167.631 209.126C167.291 212.044 128.996 205.366 122.548 219.126C113.925 237.519 146.169 239.099 156.097 238.053C164.394 237.176 172.809 236.947 180.889 235.438C181.156 235.389 194.153 233.997 169.23 238.769C147.16 242.995 90.4779 253.756 88.9641 262.487C87.4503 271.218 95.0462 273.682 99.275 281.556C103.504 289.429 106.52 291.001 110.939 295.051C115.357 299.1 142.753 259.14 172.051 268.915M323.418 199.974C348.126 209.727 352.589 199.404 329.977 213.31M291.997 210.007C291.781 209.411 291.563 208.813 291.345 208.215" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="text-content">
+                      <p>Ave</p>
+                    </div>
+                  </button>
+                  <button class="animal-option fish">
+                    <div class="icon-content">
+                      <svg viewBox="50 50 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M72.6124 231.153C134.781 193.503 314.564 79.9927 334.689 221.804C339.154 253.253 294.397 255.368 274.842 261.274C190.714 286.678 72.7366 182.988 68.4835 184.418C61.0303 186.917 66.1202 211.243 67.4536 216.612" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M213.148 141.452C192.038 124.537 192.042 144.421 197.372 160.519" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M231.895 280.837C217.936 284.449 212.383 283.438 215.197 273.341" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M296.4 195.222C295.802 194.92 295.199 194.618 294.601 194.315" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M249.302 182.009C275.308 209.712 235.787 215.214 261.354 234.39" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M215.888 196.783C211.452 209.464 227.093 208.566 230.545 215.381C231.259 216.79 198.778 224.502 224.266 237.077" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M175.42 198.126C171.662 208.426 178.166 227.838 185.029 231.704" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="text-content">
+                      <p>Peixe</p>
+                    </div>
+                  </button>
+                  <button class="animal-option bunny">
+                    <div class="icon-content">
+                      <svg viewBox="20 20 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M138.546 199.585C129.21 185.366 124.071 168.661 115.695 153.711C108.408 140.713 81.6988 55.0985 118.14 60.3242C152.857 65.3048 167.3 124.197 173.643 151.253C177.301 166.857 177.793 188.937 178.538 188.937C179.302 188.937 187.99 158.732 189.151 156.169C208.696 113.002 233.224 84 264.239 55.0001C295.254 26.0002 295.106 42.0806 297.699 43.1209C303.278 45.3622 311 89.9999 280.5 139C250 188 239.59 199.585 233.224 210.233C231.519 213.085 266 232 266 270C266 308.999 232.304 354 189.152 354C146 354 88.9998 310 115.695 223" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M189.445 293.566C167 274 200.454 277.316 201.396 280.512C202.237 283.361 191.731 291.141 189.445 293.566Z" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M173 316.91C186.916 322.974 194.976 322.245 205.94 311" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M189.65 299.518C189.794 303.558 189.129 307.336 188.67 311.144" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M177.504 252.514C177.504 249.929 177.504 247.348 177.504 244.763" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M202.693 250.826C202.693 248.163 202.693 245.495 202.693 242.826" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="text-content">
+                      <p>Coelho</p>
+                    </div>
+                  </button>
+                  <button class="animal-option rodents">
+                    <div class="icon-content">
+                      <svg viewBox="50 50 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M322 223.805C315.249 185.159 226.246 115.914 189.599 111.807C149.224 107.284 117.586 180.867 138.648 213.15C151.642 233.066 240.614 216.256 316.393 225.744" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M282.432 158.51C291.029 67.79 244.513 121.869 266.719 147.589" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M256.946 147.051C204.311 118.779 199.53 165.244 260.648 176.549" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M286.223 196.563C286.415 196.048 286.606 195.533 286.801 195.019" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M138.392 215.326C131.817 208.864 123.809 202.441 115.116 198.895C74.3723 182.278 69.12 236.77 94.2262 258.53C119.068 280.062 191.442 253.049 195.688 292" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="text-content">
+                      <p>Roedor</p>
+                    </div>
+                  </button>
+                  <button class="animal-option insect">
+                    <div class="icon-content">
+                      <svg viewBox="50 50 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M273.731 110.859C252.006 133.626 230.01 162.416 208.763 186.88C176.054 224.544 144.845 257.692 136.286 270.055C122.308 290.244 92.8141 214.836 106.565 164.699C125.008 97.4547 226.142 50.4395 277.688 116.768C341.555 198.949 234.521 362.507 141.589 278.801" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M281.775 67C287.268 91.131 286.44 116.68 291.121 140.683" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M325 104.426C308.18 95.8358 288.229 94.4681 270.094 98.1786" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path opacity="0.503384" d="M204.232 93.9004C209.602 134.271 164.762 138.494 147.434 107.152" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path opacity="0.503384" d="M225.997 161.928C169.473 129.781 156.32 236.6 213.87 232.99C236.796 231.547 251.742 182.842 231.049 173.599" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path opacity="0.503384" d="M245.561 266.517C216.162 231.701 194.435 271.998 207.278 297.406" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path opacity="0.503384" d="M110.751 153.548C146.887 154.297 145.335 204.577 107.713 210.857" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path opacity="0.503384" d="M291.121 194.532C261.137 193.07 257.632 224.421 273.756 242.435" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="text-content">
+                      <p>Inseto</p>
+                    </div>
+                  </button>
+                  <button class="animal-option horse">
+                    <div class="icon-content">
+                      <svg viewBox="30 30 350 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M283.639 105.081C278.653 127.457 269.614 140.739 300.424 151.33C304.739 152.813 307.991 136.653 308.905 134.182C312.413 124.736 326.496 87.7406 320.557 79.1767C312.413 67.4326 243.499 43.3563 234.979 67.4326C230.316 80.6069 225.267 118.779 219.831 181.95C156.765 170.981 124.65 166.377 123.485 168.138C122.234 170.042 129.235 179.542 123.485 202.155C117.735 224.769 103.339 242.502 104.092 244.41C117.44 278.133 119.24 311.937 119.24 349.128" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M284.965 104.654C279.794 103.839 264.77 99.7392 261.582 106.639C247.01 138.184 255.824 282.042 261.582 349.128" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M252.204 195.291C297.793 215.392 309.988 212.722 303.134 223.668C297.448 232.748 286.797 260.975 281.44 267.936" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M119.732 169.651C94.8767 180.251 86.4272 205.044 76.9999 225.203" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M264.672 50C264.094 51.8481 265.247 52.8488 265.535 54.2733" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M290.311 54.2734C289.733 56.1215 290.887 57.1223 291.174 58.5467" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M239.384 52.8491C239.769 55.7922 242.452 56.9415 243.657 58.5468" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M225.139 71.7141C227.585 71.8822 228.999 73.1727 230.837 73.8678" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M219.574 99.4246C220.435 99.7123 221.298 99.9972 222.158 100.285" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="text-content">
+                      <p>Cavalo</p>
+                    </div>
+                  </button>
+                  <button class="animal-option pig">
+                    <div class="icon-content">
+                      <svg viewBox="30 30 350 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M296.454 196.105C294.277 176.35 288.832 153.426 275.065 137.974C226.874 83.884 118.278 92.5997 110.591 176.974C107.899 206.501 118.573 233.443 126.816 260.862C130.273 272.365 131.917 291.384 144.699 292.978" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M299.309 196.58C347.664 202.51 312.082 260.617 276.934 252.769" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M275.009 253.681C230.251 272.588 167.846 274.376 126.248 244.728" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M254.403 271.588C260.244 286.515 254.885 295.11 248.143 295.095C242.69 295.083 236.333 289.438 234.266 276.954" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M158.131 267.512C152.095 285.52 145.493 297.357 147.139 291.296" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M280.54 157.611C300.442 104.236 278.951 81.4663 256.59 151.21" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M296.453 151.994C314.905 135.83 357.724 147.239 320.717 164.312" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M106.885 181.508C97.4619 180.223 86.9728 179.028 79.0473 173.179C66.5627 163.966 69.6287 127.224 86.569 142.139C102.223 155.921 83.5876 188.033 63.9991 176.207" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M272.677 203.476C272.894 202.833 273.107 202.19 273.32 201.542" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="text-content">
+                      <p>Porco</p>
+                    </div>
+                  </button>
+                  <button class="animal-option cow">
+                    <div class="icon-content">
+                      <svg viewBox="30 30 350 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M289.118 210.413C311.209 305.493 349.358 150.606 333.063 134.603C323.108 124.833 296.249 130.172 283.471 126.592" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M280.794 165.034C272.297 68.3489 238.613 105.222 153.458 122.469C137.404 125.721 91.8558 128.778 80.5192 143.125C78.2931 145.945 84.8248 163.016 85.4661 166.912C90.5778 197.987 110.191 287.733 121.317 299" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M89.4274 216.837C67.9331 240.648 68.0156 271.09 68.0156 299" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M69.3529 158.918C68.0633 164.509 66.3848 170.042 64 175.082" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M96.1172 223.157C101.894 229.632 126.035 229.632 168.541 223.157C189.782 255.326 206.135 272.383 217.6 274.327C246.927 279.299 281.482 239.77 291.5 216.837" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M220.213 285.531C220.347 289.194 220.708 292.713 220.936 296.306" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M310.234 115.816C305.048 124.4 301.264 133.152 302.411 142.755" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="text-content">
+                      <p>Vaca</p>
+                    </div>
+                  </button>
+                  <button class="animal-option reptile">
+                    <div class="icon-content">
+                      <svg viewBox="30 30 350 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M300.736 121.416C289.046 117.088 272.523 107.949 251.165 94C252.179 142.139 254.939 169.927 259.445 177.365C266.205 188.522 294.29 176.763 334.697 183.889C342.381 159.703 318.27 127.907 300.736 121.416Z" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M302.145 131.436C286.036 123.785 267.885 143.36 281.508 158.32C285.308 162.491 290.316 164.868 296.2 163.361C305.435 160.994 316.565 149.408 306.547 138.036" stroke="#000000" stroke-opacity="0.9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M251.166 122.625C202.16 80.9014 134.883 88.1889 92.7631 122.625C15.806 185.539 109.344 356.035 185.262 291.616C208.146 272.199 208.146 257.43 188.511 231.747C170.575 208.286 127.878 210.24 113.295 238.859C98.6232 267.648 165.197 302.897 176.015 260.448C180.645 242.286 144.638 220.465 146.537 248.377" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M236.621 172.943C235.377 177.525 224.012 183.334 202.527 190.369C203.649 196.317 220.018 216.937 220.71 222.949" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M293.715 149.98C293.715 147.652 293.715 145.336 293.715 143.019" stroke="#000000" stroke-opacity="0.9" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M236.621 172.999C136.074 170.968 82.2808 191.758 75.2405 235.37" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="text-content">
+                      <p>Réptil</p>
+                    </div>
+                  </button>
+                  <button class="animal-option amphibian">
+                    <div class="icon-content">
+                      <svg viewBox="30 30 350 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M140.126 298C126.478 278.853 54.833 167.153 70.1301 153.966C112.157 117.747 160.987 233.547 169 254.261" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M231 268.972C243.441 246.461 259.817 226.683 274.612 205.819C278.22 200.734 320.083 138.326 322.768 139.006C343.317 144.18 326.022 199.098 305.37 238.087C284.718 277.076 251.134 295.672 251.805 297.023C255.377 304.223 287.8 289.396 292.786 290.026" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M259 298C266.518 299.647 276.168 308.608 279 310" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M254 299C255.514 302.597 255.482 306.329 256 310" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M151 309C145.734 312.243 119.294 310.792 114 314" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M142 314C140.604 316.008 141.333 318.665 141 321" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M142 300C144.572 305.007 147.155 307.391 151 310" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M118 161.604C168.8 81.3012 290 44.8316 290 181" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M186 87.9739C175.016 73.6925 165.556 87.8316 164 101" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M256 80.8324C269.395 72.3387 274.059 84.7859 272.804 94" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M259 141C238.262 134.454 210.707 135.187 188 138.362" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="text-content">
+                      <p>Anfíbio</p>
+                    </div>
+                  </button>
+                </div>
+                <div class="choose-animal-button-container">
+                  <button class="choose-animal-button">
+                    <div class="display-content">
+                      <div class="button-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_" viewBox="0 0 512 512" xml:space="preserve">
+                          <path class="st0" d="M205.116,153.078c31.534,11.546,69.397-12.726,84.58-54.209c15.174-41.484,1.915-84.462-29.614-96.001   c-31.541-11.53-69.4,12.735-84.582,54.218C160.325,98.57,173.584,141.548,205.116,153.078z"/>
+                          <path class="st0" d="M85.296,219.239c32.987-2.86,56.678-40.344,52.929-83.75c-3.757-43.391-33.545-76.253-66.532-73.409   c-32.984,2.869-56.674,40.36-52.921,83.759C22.53,189.23,52.313,222.091,85.296,219.239z"/>
+                          <path class="st0" d="M342.196,217.768c28.952,17.017,70.552-0.073,92.926-38.154c22.374-38.106,17.041-82.758-11.915-99.774   c-28.951-17.001-70.56,0.097-92.93,38.178C307.905,156.117,313.245,200.768,342.196,217.768z"/>
+                          <path class="st0" d="M497.259,262.912c-18.771-27.271-63.07-29.379-98.954-4.694c-35.892,24.701-49.762,66.822-30.996,94.101   c18.766,27.27,63.069,29.38,98.954,4.686C502.143,332.312,516.021,290.191,497.259,262.912z"/>
+                          <path class="st0" d="M304.511,268.059c-3.58-24.773-18.766-47.366-43.039-58.824c-24.268-11.45-51.365-8.807-72.758,4.169   c-23.646,14.35-38.772,33.096-59.138,41.29c-20.363,8.193-77.4-16.209-112.912,48.278c-25.081,45.548-2.057,103.128,44.962,125.315   c35.738,16.864,64.023,14.981,84.788,24.774c20.762,9.793,37.29,32.83,73.025,49.692c47.018,22.188,106.1,3.362,125.315-44.957   c27.206-68.407-27.897-96.922-34.522-117.85C303.613,319.021,308.47,295.426,304.511,268.059z"/>
+                        </svg>
+                      </div>
+                      <div class="button-text">
+                        <p>Escolher animal</p>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
           <div class="divisor"></div>
           <div class="inputs-content">
-            <section class="title-content">
-              <p>Preencha os campos</p>
-            </section>
             <div class="inputs-container">
-              <div class="choose-color-content dropdown input-content">
+              <!-- <div class="choose-color-content dropdown input-content">
                 <button class="dropdown-button choose-color-button">
                     Cor
                 </button>
@@ -234,27 +453,66 @@
                       </span>
                   </a>
                 </div>
-            </div>
+              </div> -->
               <div class="input-content pet-name">
-                <label for="pet-name">
-                  <p class="custom-placeholder">Nome</p>
-                  <input type="text" class="mark-input input-pet-name" name="pet-name" maxlength="24">
+                <label class="frame-container" for="pet-name">
+                  <div class="frame-border dropdown">
+                    <div class="frame-title">
+                      <p>A foto de trata de...</p>
+                    </div>
+                    <button class="dropdown-button choose-color-button">
+                      Cor
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#" data-value="Morador das ruas">
+                            <span>
+                              <div class="color-type street"></div>
+                                Morador das ruas
+                            </span>
+                        </a>
+                        <a href="#" data-value="Possivelmente perdido">
+                            <span>
+                              <div class="color-type lost"></div>
+                                Possivelmente Perdido
+                            </span>
+                        </a>
+                        <a href="#" data-value="Curtindo a paisagem">
+                            <span>
+                                <div class="color-type casual"></div>
+                                Curtindo a paisagem
+                            </span>
+                        </a>
+                        <a href="#" data-value="Acidentado/Socorro">
+                          <span>
+                              <div class="color-type accident"></div>
+                              Acidentado/Socorro
+                          </span>
+                      </a>
+                    </div>
+                  </div>
                 </label>
               </div>
               <div class="input-content pet-description">
-                <label for="pet-description">
-                  <p class="custom-placeholder">Descrição</p>
-                  <input type="text" class="mark-input input-pet-description" name="pet-description" maxlength="72">
+                <label class="frame-container" for="pet-description">
+                  <div class="frame-title">
+                    <p>Descrição</p>
+                  </div>
+                  <div class="frame-border">
+                    <textarea type="text" class="mark-input input-pet-description" placeholder="Ex: cavalo preto com manchas brancas" name="pet-description" maxlength="80"></textarea>
+                  </div>
                 </label>
               </div>
               <div class="input-content extra-description">
-                <label for="extra-description">
-                  <p class="custom-placeholder">Comentários</p>
-                  <input type="text" class="mark-input input-extra-description" name="extra-description" maxlength="100">
+                <label class="frame-container" for="extra-description">
+                  <div class="frame-title">
+                    <p>Comentários</p>
+                  </div>
+                  <div class="frame-border">
+                    <textarea type="text" class="mark-input input-extra-description" placeholder="Ex: encontrado próximo à igreja..." name="extra-description" maxlength="150"></textarea>
+                  </div>
                 </label>
               </div>
             </div>
-
             <div class="send-content">
               <button disabled="true" class="send-button">
                 Concluir

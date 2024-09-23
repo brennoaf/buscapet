@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+$radius: 135px;
+$total: 12; //total de animais existentes
+
+
 $menuFontColor: #CFB57D;
 
 $floatIconStrokeColor: #E9D418;
@@ -645,197 +649,445 @@ body {
 
             &.third-step{
                 z-index: 12;
+                position: absolute;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                width: 90%;
+                padding-top: 3em;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
 
-                
-                .taken-picture-content{
-                    position: relative;
+                background: white;
+
+                .background-content{
                     display: flex;
-                    justify-content: center;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    height: 0;
+
+                    pointer-events: none;
+
+                    .background-wrapper{
+                        width: 100%;
+                        height: 100%;
+                        
+                        .background-asset{
+                            position: absolute;
+                            width: 315px;
+                            aspect-ratio: 1;
+
+                            &.right-top{
+                                top: -5em;
+                                right: -8em;
+                            }
+
+                            &.left-bottom{
+                                bottom: -7em;
+                                left: -8em;
+
+                                transform: rotateY(-180deg) rotateZ(70deg);
+                            }
+                        }
 
 
-                    .picture-frame{
-                        position: absolute;
-                        width: 50%;
-
-                        svg{
+                        img{
                             width: 100%;
                             height: 100%;
+                        }
+                    }
+                }
 
-                            path{
-                                fill: gray;
+                .first-line-row{
+                    z-index: 3;
+                    position: relative;
+                    display: inline-flex;
+
+                    .taken-picture-content{
+                        position: relative;
+                        display: flex;
+                        flex-shrink: 0;
+                        justify-content: center;
+                        width: 50%;
+                        margin-left: 1em;
+    
+    
+                        .picture-frame{
+                            padding: .5em;
+
+                            border-radius: 100%;
+                            background-size: cover;
+                            background-image: url(../../images/background_asset/map_bg_model.png);
+    
+                            svg{
+                                width: 100%;
+                                height: 100%;
+    
+                                path{
+                                    fill: gray;
+                                }
+                            }
+                        }
+    
+                        .taken-picture-container{
+                            position: absolute;
+                            z-index: 2;
+                            width: 68%;
+                            max-width: 226px;
+                            aspect-ratio: 1;
+                            top: 1em;
+    
+                            border-radius: 100%;
+                            overflow: hidden;
+                            background-color: red;
+    
+                            img{
+                                position: relative;
+                                display: inline-block;
+                                object-fit: cover;
+                                width: 100%;
+                                height: 100%;
+    
                             }
                         }
                     }
 
-                    .taken-picture-container{
-                        position: relative;
+
+                    .choose-animal-content{
                         z-index: 2;
-                        width: 35%;
-                        aspect-ratio: 1;
-                        top: .5em;
+                        position: relative;
+                        width: 30%;
 
-                        border-radius: 100%;
-                        overflow: hidden;
-                        background-color: red;
+                        .choose-animal-options-content{
+                            position: absolute;
+                            display: flex;
+                            flex-shrink: 0;
+                            width: 340px;
+                            aspect-ratio: 1;
+                            justify-content: center;
+                            align-items: center;
+                            bottom: -7em;
+                            right: -5em;
 
-                        img{
-                            position: relative;
-                            display: inline-block;
-                            object-fit: cover;
-                            width: 100%;
-                            height: 100%;
+                            pointer-events: none;
 
+
+                            .choose-animal-options-container{
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+
+                                transition: .3s;
+                                border-radius: 100%;
+                                background: $floatIconFillColor;
+
+                                .animal-option{
+                                    position: absolute;
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+
+
+                                    transition: transform 0.3s;
+                                    border: none;
+                                    background: none;
+                                    cursor: pointer;
+                                    pointer-events: all;
+
+                                    .icon-content{
+                                        width: fit-content;
+
+                                        pointer-events: none;
+
+                                        svg{
+                                            width: 40px;
+                                            aspect-ratio: 1;
+                                        }
+                                    }
+
+                                    .text-content{
+
+                                        pointer-events: none;
+                                        
+                                        p{
+                                            text-align: center;
+                                            max-width: 50px;
+                                            font-size: 12px;
+                                        }
+                                    }
+    
+                                    @for $i from 1 through $total {
+                                        &:nth-child(#{$i}) {
+
+                                            $angle: 360deg / $total * ($i + 2);
+                                            
+                                            $rad: $angle * (3.1415 * 91.995);
+                                            
+                                            top: calc(50% - #{sin($rad) * $radius}); 
+                                            left: calc(50% + #{cos($rad) * $radius});
+                                            transform: translate(-50%, -50%);
+                                        }
+                                    }
+                                }
+
+                                &.hidden{
+                                    margin-left: 2.5em;
+                                    transform: scale(0.1);
+                                }
+                            }
+
+                            .choose-animal-button-container{
+                                width: fit-content;
+                                bottom: 0;
+                                right: 0;
+    
+                                .choose-animal-button{
+                                    position: relative;
+                                    flex-shrink: 0;
+                                    width: 7em;
+                                    aspect-ratio: 1;
+                                    padding: .5em;
+                                    margin-left: 3.5em;
+    
+                                    background: $takePictureFrame;
+                                    transition: .3s;
+                                    border: none;
+                                    border-radius: 100%;
+                                    cursor: pointer;
+                                    pointer-events: all;
+    
+                                    .display-content{
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: center;
+                                        width: 100%;
+                                        height: 100%;
+                                        
+                                        pointer-events: none;
+                                        
+                                        .button-icon{
+                                            width: 50%;
+                                            aspect-ratio: 1;
+                                            padding: .5em 0 0 .5em;
+            
+                                            svg{
+                                                width: 100%;
+                                                aspect-ratio: 1;
+        
+                                                transition: .3s;
+                                                pointer-events: none;
+            
+                                                .st0{
+                                                    fill: $floatButtonBackground;
+                                                }
+        
+                                                &.onfocus{
+                                                    z-index: 5;
+                                                    transform: rotateZ(-23deg);
+                                                }
+                                            }
+                                        }
+    
+                                        .button-text{
+                                            margin-top: .3em;
+    
+                                            font-size: 12px;
+                                            font-weight: 500;
+                                        }
+                                    }
+                                }
+                            }
                         }
+                        
                     }
                 }
+                
 
                 .divisor{
-                    height: 4em;
                 }
 
                 .inputs-content{
+                    z-index: 2;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                     width: 100%;
                     padding: 1.5em 1em 1em 1em;
 
-                    border-radius: 6px;
-                    background: #ffffff;
-
-                    .title-content{
-                        margin-bottom: 3em;
-
-                        font-size: 18px;
-                        font-weight: 500;
-                        color: $takePictureFrame;
-                    }
 
                     .inputs-container{
                         width: 100%;
+                        padding: 0 2em 2em 2em;
                         
-                        .choose-color-content{
-                
-                            &.dropdown{
-                              width: 100%;
-                              position: relative;
-                
-                              .dropdown-button{
-                                  display: flex;
-                                  width: 100%;
-                                  height: 100%;
-                                  padding-left: .5em;
-                                  align-items: center;
-                
-                                  color: #ffffff;
-                                  font-size: 17px;
-                                  font-weight: 500;
-                                  background: none;
-                                  border: none;
-                                  border-radius: 8px;
-                                  background: lightgray;
-                                  cursor: pointer;
-                
-                                  &:hover{
-                                      background-color: lightyellow;
-                                  }
-                              }
-                
-                              .dropdown-content{
-                                  display: none;
-                                  position: absolute;
-                                  flex-direction: column;
-                                  width: 100%;
-                              
-                                  font-size: 15px;
-                                  background-color: lightyellow;
-                                  z-index: 1;
-                                  border-radius: 5px;
-                                  overflow: hidden;
-                
-                                  a{
-                                    display: block;
-                                    padding: 1em;
-                                    text-decoration: none;
-                
-                                    span{
-                                      display: flex;
-                                      align-items: center;
-                                      
-                                      color: $floatButtonBackground;
-                                    }
-                
-                                    &:hover{
-                                        background-color: lightgray;
-                                    }
-                                  }
-                
-                                  &.show{
-                                      display: flex;
-                                  }
-                
-                                  .color-type{
-                                    width: 10%;
-                                    aspect-ratio: 1;
-                                    flex-shrink: 0;
-                                    margin-right: 1em;
-
-                                    border-radius: 100%;
-
-                                    &.street{
-                                        background-color: $colorTypeOnStreet;
-                                    }
-                                    &.lost{
-                                        background-color: $colorTypeLost;
-                                    }
-                                    &.casual{
-                                        background-color: $colorTypeCasual;
-                                    }
-                                    &.accident{
-                                        background-color: $colorTypeAccident;
-                                    }
-                                  }
-                              }
-                          }
-                
-                          }
-                        
+                        border-radius: 10px;
+                        background: #ffffff;
 
                         .input-content{
+                            position: relative;
+                            width: 100%;
                             height: 3em;
 
                             margin-bottom: 1.5em;
 
-                            label{
-                                display: flex;
-                                position: relative;
-                                align-items: end;
-                                width: 100%;
-                                height: 100%;
-
-                                p{
+                            .frame-container{
+                                
+                                .frame-title{
                                     position: absolute;
-                                    left: 0;
-                                    top: 22px;
+                                    top: -10px;
+                                    left: 12px;
+                                    padding: 0 .5em 0 .5em;
 
-                                    font-size: 17px;
-                                    color: $floatIconFillColor;
-                                    transition: .7s;
-                                    pointer-events: none;
+                                    background: white;
+                                    user-select: none;
 
+                                    p{
+                                        font-size: 14px;
+                                        font-weight: 500;
+                                        color: #EDB506; 
+                                    }
                                 }
 
-                                input{
-                                    width: 100%;
-                                    height: 50%;
+                                .frame-border{
+                                    padding: .7em .2em .2em .2em;
 
-                                    color: $floatButtonBackground;
-                                    font-size: 16px;
-                                    background: none;
-                                    border: none;
-                                    border-bottom: solid $floatButtonBackground 1px;
-                                    outline: none;
+                                    border: #EDB506 solid 2px;
+                                    border-radius: 8px;
+
+                                    textarea{
+                                        width: 100%;
+                                        height: 3em;
+                                        
+                                        color: $floatButtonBackground;
+                                        resize: none;
+                                        background: none;
+                                        border: none;
+                                        outline: none;
+                                        font-size: 14px;
+
+                                    }
+
+                                    &.dropdown{
+                                        position: relative;
+                                        width: 100%;
+                                        height: 3em;
+                                        padding: 0;
+
+                                        .frame-title{
+                                            z-index: 1;
+        
+                                            p{
+                                                font-size: 14px;
+                                                font-weight: 500;
+                                                color: #EDB506; 
+                                            }
+                                        }
+                          
+                                        .dropdown-button{
+                                            display: flex;
+                                            width: 100%;
+                                            height: 100%;
+                                            padding-left: .5em;
+                                            align-items: center;
+                          
+                                            color: #ffffff;
+                                            font-size: 17px;
+                                            font-weight: 500;
+                                            background: none;
+                                            border: none;
+                                            border-radius: 8px;
+                                            background: none;
+                                            cursor: pointer;
+                          
+                                            &:hover{
+                                                background-color: lightyellow;
+                                            }
+                                        }
+                          
+                                        .dropdown-content{
+                                            z-index: 2;
+                                            display: none;
+                                            position: absolute;
+                                            flex-direction: column;
+                                            width: 100%;
+                                        
+                                            font-size: 15px;
+                                            background-color: lightyellow;
+                                            z-index: 1;
+                                            border-radius: 5px;
+                                            overflow: hidden;
+                          
+                                            a{
+                                              display: block;
+                                              padding: 1em;
+                                              text-decoration: none;
+                          
+                                              span{
+                                                display: flex;
+                                                align-items: center;
+                                                
+                                                color: $floatButtonBackground;
+                                              }
+                          
+                                              &:hover{
+                                                  background-color: lightgray;
+                                              }
+                                            }
+                          
+                                            &.show{
+                                                display: flex;
+                                            }
+                          
+                                            .color-type{
+                                              width: 10%;
+                                              aspect-ratio: 1;
+                                              flex-shrink: 0;
+                                              margin-right: 1em;
+          
+                                              border-radius: 100%;
+          
+                                              &.street{
+                                                  background-color: $colorTypeOnStreet;
+                                              }
+                                              &.lost{
+                                                  background-color: $colorTypeLost;
+                                              }
+                                              &.casual{
+                                                  background-color: $colorTypeCasual;
+                                              }
+                                              &.accident{
+                                                  background-color: $colorTypeAccident;
+                                              }
+                                            }
+                                        }
+                            
+                                      }
+                                }
+                            }
+
+                            &.pet-description{
+                                margin-bottom: 2em;
+
+                                .frame-border{
+
+                                    textarea{
+                                        height: 3em;
+                                        
+                                    }
+
+                                }
+                            }
+
+                            &.extra-description{
+                                margin-bottom: 3em;
+
+                                .frame-border{
+
+                                    textarea{
+                                        height: 5em;
+                                    }
+
                                 }
                             }
                         }

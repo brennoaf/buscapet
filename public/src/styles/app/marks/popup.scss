@@ -46,6 +46,39 @@
                             img{
                                 width: 100%;
                             }
+
+                            .chosen-animal-content{
+                                position: absolute;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                width: 4em;
+                                height: 4em;
+                                padding: .2em;
+                                bottom: .2em;
+                                right: 1em;
+
+                                border-radius: 100%;
+                                background: #EDB506;
+
+                                .icon-content{
+                                    width: 60%;
+                                    aspect-ratio: 1;
+
+                                }
+
+                                .text-content{
+                                   
+                                    p{
+                                        margin: 0;
+                                        margin-top: -.5em;
+
+                                        color: #202020;
+                                        font-size: 10px;
+                                        font-weight: 500;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
