@@ -1,0 +1,174 @@
+$menuFontColor: #CFB57D;
+
+$floatIconStrokeColor: #E9D418;
+$floatIconFillColor: #E9D418;
+$floatButtonBackground: #202020;
+
+$takePictureFrame: #EDB506;
+
+$colorTypeOnStreet: #FFC917;
+$colorTypeLost: #A80101;
+$colorTypeCasual: #008604;
+$colorTypeAccident: #2D0000;
+
+
+.float-buttons-container{
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: end;
+    margin-bottom: 1em;
+
+    .float-camera-container{
+        z-index: 4;
+        position: absolute;
+        top: 0;
+        left: 1em;
+
+        .float-camera-content{
+
+            .float-camera-button{
+                width: 5em;
+                aspect-ratio: 1;
+                padding: .5em;
+                
+                background: $floatButtonBackground;
+                border: none;
+                border-radius: 100%;
+                pointer-events: all;
+                cursor: pointer;
+
+                svg{
+                    fill: none;
+                    stroke: $floatIconStrokeColor;
+                    stroke-width: 1.5;
+
+                }
+
+            }
+        }
+    }
+
+    .alt-buttons-container{
+        z-index: 6;
+        position: absolute;
+        width: 300px;
+        height: 185px;
+
+        .alt-button-container{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            align-items: center;
+            width: fit-content;
+
+            transition: .3s;
+            color: $floatButtonBackground;
+            font-weight: 300;
+
+            .alt-button{
+                width: 4.5em;
+                aspect-ratio: 1;
+                padding: .5em;
+                flex-shrink: 0;
+                
+                background: $floatButtonBackground;
+                border: none;
+                border-radius: 100%;
+                pointer-events: all;
+
+                svg{
+                    fill: none;
+                    stroke: $floatIconStrokeColor;
+                    stroke-width: 1.5;
+
+                }
+
+            }
+
+            span{
+                margin-top: .5em;
+            }
+
+            &.left-bottom-container{
+                bottom: 0;
+                left: 0;
+                top: auto;
+
+            }
+
+            &.left-top-container{
+                top: 0;
+                left: 4em;
+                bottom: auto;
+
+            }
+
+            &.right-top-container{
+                top: 0;
+                right: 4em;
+                bottom: auto;
+                left: 61%;
+            }
+
+            &.right-bottom-container{
+                bottom: 0;
+                right: 0;
+                top: auto;
+                left: 78%;
+            }
+
+            &.initial{
+                top: 100px;
+                bottom: inherit;
+                right: inherit;
+                left: 40%;
+                transform: scale(0.3);
+            }
+
+        }
+    }
+
+
+    .main-button-container{
+        z-index: 6;
+        flex-shrink: 0;
+
+        .main-button-content{
+
+
+            .menu-main-button{
+                width: 6em;
+                aspect-ratio: 1;
+                padding: 1em;
+                padding-left: 1.2em;
+
+                background: $floatButtonBackground;
+                transition: 1s;
+                border: none;
+                border-radius: 100%;
+
+                pointer-events: all;
+
+                svg{
+                    width: 100%;
+                    height: 100%;
+
+                    transition: .3s;
+                    pointer-events: none;
+
+                    .st0{
+                        fill: $floatIconFillColor;
+                    }
+
+                    &.onfocus{
+                        z-index: 5;
+                        transform: rotateZ(-23deg);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: ['https://buscapet-eight.vercel.app', 'https://buscapet.onrender.com', 'https://buscapet-production.up.railway.app'],
+        origin: ['https://buscapet-map.vercel.app', 'https://buscapet.onrender.com', 'https://buscapet-production.up.railway.app'],
         methods: ['GET', 'POST']
     }
 });
@@ -32,5 +32,5 @@ io.on('connection', (socket) => {
 });
 
 server.listen(3002, () => {
-    console.log('Servidor rodando na porta 3000');
+    console.log('Server open');
 });

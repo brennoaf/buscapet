@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<div class="main">
+    <div class="page-content">
+      <div class="map-content">
+        <div id="map" #map>
+        </div>
+        <div class="controls">
+          <button>Add Marker at My Location</button>
+          <button>Test</button>
+        </div>
+        <div class="buttons-content">
+          <div #blurBackground class="blur-background hidden"></div>
+          <div class="down-container">
+            <app-float-buttons [blurBackground]="blurBackground" (camButtonClicked)="showPopup()"></app-float-buttons>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup-content hidden" #popupContent>
+        <app-popup-content 
+        [popupContent]="popupContent"
+        [map]="map"
+        ></app-popup-content>
+    </div>
+</div>

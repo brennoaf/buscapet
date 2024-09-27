@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: "Roboto", sans-serif;
+}
+
+.leaflet-popup-pane{
+
+    .leaflet-popup{
+
+        .leaflet-popup-content-wrapper{
+            width: fit-content;
+            height: 250px;
+            overflow: hidden;
+
+            .leaflet-popup-content{
+                display: flex;
+                flex-direction: row;
+                width: max-content;
+                height: 100%;
+                margin: 0;
+
+
+                .left-column-profile{
+                    position: relative;
+                    height: 100%;
+
+                    .profile-picture-content{
+                        position: relative;
+                        width: 160px;
+                        
+                        pointer-events: none;
+
+                        .profile-picture-frame{
+                            z-index: 1;
+                            position: absolute;
+                            width: 125%;
+                            top: -10px;
+                            left: -30px;
+
+                            img{
+                                width: 100%;
+                            }
+                        }
+
+                        .profile-picture-wrapper{
+                            z-index: 2;
+                            position: absolute;
+                            top: -5px;
+                            left: -5px;
+                            
+                            img{
+                                width: 100%;
+                            }
+
+                            .chosen-animal-content{
+                                position: absolute;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                width: 4em;
+                                height: 4em;
+                                padding: .2em;
+                                bottom: .2em;
+                                right: 1em;
+
+                                border-radius: 100%;
+                                background: #EDB506;
+
+                                .icon-content{
+                                    width: 60%;
+                                    aspect-ratio: 1;
+
+                                }
+
+                                .text-content{
+                                   
+                                    p{
+                                        margin: 0;
+                                        margin-top: -.5em;
+
+                                        color: #202020;
+                                        font-size: 10px;
+                                        font-weight: 500;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .right-column-information{
+                    width: 230px;
+                    margin-left: .5em;
+                    height: 100%;
+                    .animal-text-content{
+                        padding-right: .5em;
+
+                        .title-wrapper{
+                            height: 4em;
+                            margin-top: .5em;
+
+                            p{
+
+                                font-size: 17px;
+                                font-weight: 500;
+                                color: black;
+                            }
+                        }
+
+                        .description-wrapper{
+                            height: 5em;
+
+                            p{
+                                font-size: 14px;
+                            }
+                        }
+
+                        .comment-wrapper{
+                            position: relative;
+
+
+                            .frame-container{
+                                
+                                .frame-title{
+                                    position: absolute;
+                                    top: -7px;
+                                    left: 12px;
+                                    padding: 0 .3em 0 .3em;
+
+                                    background: white;
+                                    user-select: none;
+
+                                    p{
+                                        font-weight: 500;
+                                        color: #EDB506; 
+                                    }
+                                }
+
+                                .frame-border{
+                                    padding: 1em .7em .7em .7em;
+
+                                    border: #EDB506 solid 2px;
+                                    border-radius: 8px;
+
+                                    p{
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+
+                        p{
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .leaflet-popup-tip-container{
+            left: 170px;
+        }
+    }
+}
