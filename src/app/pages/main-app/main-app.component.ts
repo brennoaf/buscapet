@@ -13,11 +13,11 @@ import { TakePicture } from './components/popup-content/services/takePhoto';
 })
 export class MainAppComponent implements AfterViewInit {
   @ViewChild('blurBackground') blurBackground!: HTMLDivElement;
-  @ViewChild(FloatButtonsComponent) floatButtonsComponent!: FloatButtonsComponent;
   @ViewChild('popupContent') popupContent!: ElementRef<HTMLDivElement>;
   @ViewChild('map') mapItem!: ElementRef<HTMLDivElement>;
 
   @ViewChild(PopupContentComponent) popupComponent!: PopupContentComponent;
+  @ViewChild(FloatButtonsComponent) floatButtonsComponent!: FloatButtonsComponent;
 
   private map!: L.Map;
   private userMarker!: L.Marker;
@@ -41,6 +41,7 @@ export class MainAppComponent implements AfterViewInit {
     this.initializeMap();
     this.setupSocket();
     this.setupUIInteractions();
+
   }
 
   private initializeMap(): void {
@@ -61,10 +62,38 @@ export class MainAppComponent implements AfterViewInit {
     }).addTo(this.map);
 
     this.trackUserLocation();
-  }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) =>{
+        const userPosition: [number, number] = [position.coords.latitude, position.coords.longitude];
+
+        this.map.setView(userPosition, 17);
+
+        setInterval(() => {
+          this.map.setView(userPosition, 17);
+
+        }, 120000);
+        
+      });
+  };
+
+  public setMapToUser(): void{
+    navigator.geolocation.getCurrentPosition(
+      (position) =>{
+        const userPosition: [number, number] = [position.coords.latitude, position.coords.longitude];
+
+        this.map.setView(userPosition, 17);
+
+        setInterval(() => {
+          this.map.setView(userPosition, 17);
+
+        }, 120000);
+        
+    });
+  };
 
   private setupSocket(): void {
-    this.socket = io('https://buscapet-production.up.railway.app/');
+    this.socket = io('http://127.0.0.1:3002');
 
     this.socket.on('existingMarkers', (existingMarkers: any[]) => {
       existingMarkers.forEach(marker => {
@@ -74,10 +103,25 @@ export class MainAppComponent implements AfterViewInit {
           iconSize: marker.iconSize,
           iconAnchor: marker.iconAnchor,
           popupAnchor: marker.popupAnchor,
-          shadowUrl: marker.shadowUrl,
+          shadowUrl: '',
           shadowSize: marker.shadowSize,
           shadowAnchor: marker.shadowAnchor
         });
+
+        const tempDiv: any = document.createElement('div');
+        tempDiv.innerHTML = marker.popupContent;
+        const tempImg: HTMLImageElement | null = tempDiv.querySelector('.profile-picture-wrapper img');
+        const tempAnimalType: HTMLElement | null = tempDiv.querySelector('.text-content');
+        const tempTitle: HTMLElement | null = tempDiv.querySelector('.title-wrapper p');
+
+        const popupPicture = tempImg ? tempImg.src : '';
+
+        console.log(marker.popupContent)
+
+        this.floatButtonsComponent.nearbyTitle.nativeElement.textContent = tempTitle!.textContent;
+        this.floatButtonsComponent.nearbyTitle.nativeElement.style.color = tempTitle!.style.color;
+        this.floatButtonsComponent.nearbyType.nativeElement.textContent = tempAnimalType!.textContent;
+        this.floatButtonsComponent.nearbyImage.nativeElement.src = popupPicture;
 
         const newMarker = L.marker(position, { icon: customIcon }).addTo(this.map);
         newMarker.bindPopup(marker.popupContent).openPopup();
@@ -92,7 +136,7 @@ export class MainAppComponent implements AfterViewInit {
         iconSize: markerData.iconSize,
         iconAnchor: markerData.iconAnchor,
         popupAnchor: markerData.popupAnchor,
-        shadowUrl: markerData.shadowUrl,
+        shadowUrl: '',
         shadowSize: markerData.shadowSize,
         shadowAnchor: markerData.shadowAnchor
       });
@@ -100,6 +144,7 @@ export class MainAppComponent implements AfterViewInit {
       const newMarker = L.marker(position, { icon: customIcon }).addTo(this.map);
       newMarker.bindPopup(markerData.popupContent).openPopup();
       this.markers.push(newMarker);
+      
     });
   }
 
@@ -110,15 +155,11 @@ export class MainAppComponent implements AfterViewInit {
           const userPosition: [number, number] = [position.coords.latitude, position.coords.longitude];
           this.userMarker.setLatLng(userPosition);
 
-          setInterval(() => {
-            this.map.setView(userPosition);
-
-          }, 120000)
         },
         (error) => {
           this.handleLocationError(true, this.map.getCenter(), error.message);
         },
-        { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
       );
     } else {
       this.handleLocationError(false, this.map.getCenter());
@@ -144,14 +185,29 @@ export class MainAppComponent implements AfterViewInit {
     const sendButton = this.popupComponent.sendBtn.nativeElement;
 
     sendButton.addEventListener('click', () => {
-      console.log(colorButton)
-      console.log(petComment)
-      console.log(petDescription)
-      this.addMarkerFromCurrentLocation(colorButton!, petDescription!, petComment!, animalButton);
+      let markerType = '';
+      if(colorButton.textContent == 'Possivelmente perdido'){
+        markerType = 'perdido';
+  
+      }else 
+      if(colorButton.textContent == 'Morador das ruas'){
+        markerType = 'abandonado';
+  
+      }else 
+      if(colorButton.textContent == 'Curtindo a paisagem'){
+        markerType = 'entretenimento';
+        
+      }else 
+      if(colorButton.textContent == 'Acidentado/Socorro'){
+        markerType = 'acidente';
+  
+      }
+      this.addMarkerFromCurrentLocation(colorButton!, petDescription!, petComment!, animalButton, markerType!);
     });
   }
 
-  private addMarkerFromCurrentLocation(markName: string, markDescription: string, markComment: string, animalButton: HTMLElement): void {
+  private addMarkerFromCurrentLocation(markName: string, markDescription: string, markComment: string, animalButton: HTMLElement, markerType: string): void {
+    const expirationTime = this.getExpirationTime(markerType);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -161,19 +217,19 @@ export class MainAppComponent implements AfterViewInit {
           const markCanvas = this.popupComponent.markCanvas.nativeElement;
           const markPhoto = this.popupComponent.markPhoto.nativeElement;
           const canvas = this.popupComponent.canvas.nativeElement;
-  
-          const animalIcon = new AnimalIcon(sketchMarkColor, markCanvas, markPhoto, canvas);
-  
 
+          const animalIcon = new AnimalIcon(sketchMarkColor, markCanvas, markPhoto, canvas);
+    
           const marker = L.marker(userPosition, {
             icon: animalIcon.customIcon,
-            title: 'Sua localização'
+            title: markerType
           }).addTo(this.map);
 
+  
           const popupContent = this.createPopupContent(markName, markDescription, markComment, animalButton, animalIcon);
           marker.bindPopup(popupContent).openPopup();
           this.markers.push(marker);
-
+  
           this.socket.emit('addMarker', {
             lat: userPosition[0],
             lng: userPosition[1],
@@ -181,13 +237,26 @@ export class MainAppComponent implements AfterViewInit {
             iconSize: [48, 48],
             iconAnchor: [15, 40],
             popupAnchor: [0, -32],
-            shadowUrl: animalIcon.customMark,
+            shadowUrl: '',
             shadowSize: [64, 64],
             shadowAnchor: [23, 41],
-            popupContent
+            popupContent,
+            type: markerType,
+            expiration: expirationTime
           });
-
+  
           this.map.setView(userPosition);
+  
+
+          if (expirationTime > 0) {
+            setTimeout(() => {
+              this.map.removeLayer(marker);
+              const index = this.markers.indexOf(marker);
+              if (index > -1) {
+                this.markers.splice(index, 1);
+              }
+            }, expirationTime);
+          }
         },
         () => {
           alert("Unable to retrieve your location. Please check your browser's location permissions.");
@@ -198,6 +267,23 @@ export class MainAppComponent implements AfterViewInit {
       alert('Geolocation is not supported by this browser.');
     }
   }
+  
+
+  private getExpirationTime(markerType: string): number {
+    switch (markerType) {
+      case 'perdido':
+        return 24 * 60 * 60 * 1000; // 24 horas em milissegundos
+      case 'abandonado':
+        return 5 * 60 * 60 * 1000;  // 5 horas em milissegundos
+      case 'entretenimento':
+        return 24 * 60 * 60 * 1000; // 24 horas em milissegundos
+      case 'acidente':
+        return 4 * 60 * 60 * 1000;  // 4 horas em milissegundos
+      default:
+        return 24 * 60 * 60 * 1000; // Valor padrão, caso o tipo não seja conhecido
+    }
+  }
+  
 
   private createPopupContent(markName: any, markDescription: any, markComment: any, animalButton: HTMLElement, animalIcon: AnimalIcon): string {
     const icon = animalButton.childNodes[0].childNodes[0].childNodes[0] as HTMLElement;
@@ -256,5 +342,5 @@ export class MainAppComponent implements AfterViewInit {
     this.mapItem.nativeElement.classList.toggle('spotlight');
     this.popupComponent.firstStepContainer.nativeElement.classList.remove('hidden');
     console.log(this.popupComponent.firstStepContainer.nativeElement.classList);
-}
+  }
 }

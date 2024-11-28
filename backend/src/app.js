@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: ['https://buscapet-map.vercel.app', 'https://buscapet.onrender.com', 'https://buscapet-production.up.railway.app'],
+        origin: ['https://buscapet-map.vercel.app'],
         methods: ['GET', 'POST']
     }
 });
@@ -24,6 +24,14 @@ io.on('connection', (socket) => {
     socket.on('addMarker', (markerData) => {
         markers.push(markerData);
         io.emit('newMarker', markerData);
+
+        if (markerData.expiration) {
+            setTimeout(() => {
+
+                markers = markers.filter(marker => marker !== markerData);
+                io.emit('removeMarker', markerData);
+            }, markerData.expiration);
+        }
     });
 
     socket.on('disconnect', () => {

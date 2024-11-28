@@ -4,14 +4,10 @@
       <div class="map-content">
         <div id="map" #map>
         </div>
-        <div class="controls">
-          <button>Add Marker at My Location</button>
-          <button>Test</button>
-        </div>
         <div class="buttons-content">
           <div #blurBackground class="blur-background hidden"></div>
           <div class="down-container">
-            <app-float-buttons [blurBackground]="blurBackground" (camButtonClicked)="showPopup()"></app-float-buttons>
+            <app-float-buttons [blurBackground]="blurBackground" (camButtonClicked)="showPopup()" (trackButtonClicked)="setMapToUser()"></app-float-buttons>
           </div>
         </div>
       </div>

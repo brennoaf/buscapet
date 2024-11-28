@@ -86,12 +86,12 @@ export class AnimalIcon {
 
     const customIcon = L.icon({
       iconUrl: markPhoto.src,
-      iconSize: [48, 48],
+      iconSize: [32, 32],
       iconAnchor: [15, 40],
       popupAnchor: [0, -32],
-      shadowUrl: customMark,
-      shadowSize: [64, 64],
-      shadowAnchor: [23, 41]
+      shadowUrl: '',
+      shadowSize: [0, 0],
+      shadowAnchor: [0, 0]
     });
 
     return { customIcon, markImage: markPhoto, customMark };
