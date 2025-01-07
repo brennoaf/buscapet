@@ -93,7 +93,7 @@ export class MainAppComponent implements AfterViewInit {
   };
 
   private setupSocket(): void {
-    this.socket = io('http://127.0.0.1:3002');
+    this.socket = io('https://buscapet-production.up.railway.app/');
 
     this.socket.on('existingMarkers', (existingMarkers: any[]) => {
       existingMarkers.forEach(marker => {
